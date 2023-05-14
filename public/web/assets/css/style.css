@@ -1,0 +1,796 @@
+
+/* ----------------------------------------------------------------------------------------
+* Author        : web_bean
+* Template Name : Profil - Personal Portfolio Html5 Template
+* File          : Profil main CSS file
+* Version       : 1.0
+* ---------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* INDEX
+----------------------------------------------------------------------------------------
+
+01. General css
+
+02. Navigation area css
+
+03. Slider area css
+
+04. Service area css
+
+05. Testimonial area css
+
+06. Contact area css
+
+07. Footer area css
+
+-------------------------------------------------------------------------------------- */
+
+
+/* Google Font Load */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,800');
+
+
+
+/* ----------------------------------------------------------------------------------------
+*                                       01. General css
+* -------------------------------------------------------------------------------------- */
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    color: #777;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    line-height: 1.7;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    font-weight: 600;
+}
+
+h1, h2 {
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+p {
+    letter-spacing: 0px;
+}
+
+ul li{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    border: 0 none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+    outline: none;
+}
+
+.btn.focus, 
+.btn:focus, 
+.btn:hover {
+    color: #fff;
+}
+
+.btn, input[type='submit'] {
+    display: inline-block;
+    padding: 10px 25px;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+    -moz-transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+
+.btn:hover, input[type="submit"]:hover {
+    color: #fff;
+    background-color: #333;
+}
+
+.btn.btn-reverse {
+    background: #333;
+}
+
+.btn.btn-reverse:hover {
+    color: #333;
+    background-color: #fff;
+}
+
+.btn.btn-white {
+    color: #333;
+    background-color: #fff;
+}
+
+.btn.btn-white:hover {
+    color: #fff;
+    background: #333;
+}
+
+
+.btn.btn-lg {
+    height: 50px;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+    border-radius: 5px;
+}
+
+
+.section-big {
+    padding: 100px 0px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-small {
+    padding: 50px 0px;
+}
+
+.section-title {
+    margin: auto;
+    max-width: 800px;
+    margin-bottom: 60px;
+}
+
+.section-title.white h2 {
+    color: #fff;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    margin-bottom: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    position: relative;
+    display: inline-block;
+}
+
+
+
+/* preloader css */
+
+.table {
+    display: table;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+.table-cell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+img {
+    max-width: 100%;
+}
+
+.space {
+    height: 80px;
+}
+
+
+
+/* header */
+header{
+    box-shadow: 0px 3px 4.7px 0.3px rgb(0 0 0 / 24%);
+    z-index: 100;
+    background: #fff;
+}
+
+header .logo{
+    width: 15%;
+}
+
+header .main-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .nav-link{
+    font-size: 20px;
+    color: #fff;
+}
+
+header .nav-link{
+    color: #000;
+}
+
+header .nav-link:hover{
+    color: orange;
+    background-color: transparent !important;
+}
+
+header .nav .active .nav-link{
+    color: orange !important;
+    background-color: transparent !important;
+}
+
+
+
+header .btn-login,
+#recruitment .btn-recruitment,
+#recruitment-detail .btn-recruitment,
+#home-recruitments .recruitments-link{
+    border: 1px solid orange;
+    color: orange;
+    background: #fff;
+}
+
+header .btn-login:hover,
+#recruitment .btn-recruitment:hover,
+#recruitment-detail .btn-recruitment:hover,
+#home-recruitments .recruitments-link:hover{
+    background: orange;
+    color: #ffffff;
+}
+
+header .btn-active{
+    background: orange ;
+    color: #ffffff;
+}
+
+.nav-link-info:hover .dropdown-menu{
+    display: block;
+}
+
+header .login ul li{
+    position: relative;
+}
+
+header .login .info-link{
+    color: orange;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+header .login .info-menu{
+    position: absolute;
+    display: none;
+    top: 30px;
+    right: 0;
+    background: #fff;
+    min-width: 250px;
+    border: 1px solid orange;
+    box-shadow: 0px 3px 4.7px 0.3px rgb(0 0 0 / 24%);
+    border-radius: 10px;
+}
+
+header .login ul li:hover .info-menu{
+    display: block;
+}
+
+header .login .info-menu .info-menu-list{
+    display: flex;
+    flex-direction: column;
+}
+
+header .login .info-menu .info-menu-list a{
+    display: block;
+    color: orange;
+    font-size: 16px;
+    padding: 12px 8px;
+}
+
+header .login .info-menu .info-menu-list a:first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+header .login .info-menu .info-menu-list a:last-child{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+header .login .info-menu .info-menu-list a:hover{
+    background: orange;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+
+
+/* banner */
+
+.content {
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+#slider .item img{
+    width: 100%;
+    object-fit: contain;
+}
+
+#introduce,
+#home-recruitments,
+#how-to-apply{
+    margin-bottom: 24px;
+}
+/* content */
+#introduce .title,
+#recruitment .title,
+#recruitment-detail .title,
+#register .title, 
+#home-recruitments .title,
+#how-to-apply .title{
+    color: orange;
+    text-align: center;
+    font-size: 32px;
+    padding: 16px 0;
+}
+
+#introduce .body h4{
+    margin: 0;
+}
+
+#home-recruitments .recruitment-item{
+    display: block;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 16px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    color: orange;
+    min-height: 350px;
+}
+
+#home-recruitments .recruitment-item .name{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#home-recruitments .recruitment-item:hover {
+    background: #f5a00636;
+    /* color: #222; */
+}
+
+#how-to-apply .how-to-perform .nav-link{
+    display: flex;
+    padding: 8px 0;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#how-to-apply .how-to-perform .nav-link::before{
+    content: "";
+    position: absolute;
+    border: 1px dashed #ddd;
+    height: 80px;
+    left: 17px;
+    top: 54px;
+}
+
+#how-to-apply .how-to-perform .nav-link:last-child:before{
+    border: none;
+}
+
+#how-to-apply .how-to-perform .box-content{
+    padding-left: 8px;
+}
+
+#how-to-apply .how-to-perform .number{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    background: rgba(116,120,141,.15);
+    color: #74788d;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+#how-to-apply .how-to-perform .active .number{
+    background: orange;
+    color: #fff;
+}
+
+#how-to-apply .how-to-perform .nav-link .box-content h4{
+    font-size: 18px;
+}
+
+#how-to-apply .how-to-perform .nav-link .box-content p{
+    color: #222;
+}
+
+#how-to-apply .how-to-perform .active .box-content h4{
+    color: orange;
+}
+
+
+@media (max-width: 991.98px) { 
+    .content {
+        margin-top: 90px;
+        margin-bottom: 20px;
+    }
+
+    header .logo{
+        width: 30%;
+    }
+
+    #home-recruitments .recruitment-item{
+        margin: 8px 0;
+    }
+
+    header .navbar-nav{
+        margin: 0;
+    }
+ }
+
+/* footer */
+footer{
+    background: orange;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+footer .title{
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+footer .line{
+    width: 60px;
+    height: 4px;
+    background: #fff;
+}
+
+footer .address-box a{
+    color: #ffffff;
+    font-size: 16px;
+}
+
+footer .copyright{
+    text-align: center;
+}
+
+/* trang tuyển dụng */
+#recruitment .recruitment-item{
+    margin: 12px 0;
+    display: flex;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background: #f5a00636;
+    padding: 16px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#recruitment .recruitment-item a{
+    display: flex;
+    color: #000;
+    font-size: 16px;
+    align-items: center;
+}
+
+#recruitment .recruitment-item a:hover{
+    color: #000;
+}
+
+#recruitment .title-recruitment,
+#recruitment-detail .title-job h3{
+    font-size: 24px;
+    color: orange;
+}
+
+#recruitment .recruitment-item .img-logo{
+    width: 20%;
+}
+
+#recruitment .recruitment-list .job-requirements ul,
+#recruitment-detail .detail-job .box-info ul{
+    padding: 0px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#recruitment .recruitment-list .job-requirements{
+    width: 80%;
+}
+
+#recruitment .recruitment-list .job-requirements ul li,
+#recruitment-detail .detail-job .box-info ul li {
+    width: 50%;
+    padding: 4px 0;
+}
+
+.paginate{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 991.98px) { 
+    #introduce .title,
+    #recruitment .title,
+    #recruitment-detail .title,
+    #register .title, 
+    #home-recruitments .title{
+        font-size: 24px;
+    }
+
+    #recruitment .recruitment-item, #recruitment .recruitment-item a{
+        flex-direction: column;
+    }
+
+    #recruitment .title-recruitment{
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #recruitment .recruitment-item .img-logo{
+        width: 100%;
+    }
+
+    #recruitment .recruitment-list .job-requirements{
+        width: 100%;
+    }
+}
+
+/* chi tiet tin tuyen dung */
+#recruitment-detail .box-header{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    align-items: center;
+    padding: 16px;
+}
+
+#recruitment-detail .box-header .company-info{
+    display: flex;
+    align-items: center;
+}
+
+#recruitment-detail .box-header .company-info .img-logo{
+    width: 20%;
+    margin-right: 4px;
+}
+
+#recruitment-detail .detail-job .detail-title-job{
+    display: flex;
+    align-items: center;
+}
+
+#recruitment-detail .detail-job .detail-title-job h3{
+    padding-left: 8px;
+    border-left: 8px solid orange;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#recruitment-detail .detail-job .box-info{
+    background: rgba(0,177,79,.051);
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 16px 16px 0;
+}
+
+@media (max-width: 991.98px) { 
+    #recruitment-detail .box-header, #recruitment-detail .box-header .company-info{
+        flex-direction: column;
+    }
+
+    #recruitment-detail .detail-job .box-info ul{
+        flex-direction: column;
+    }
+
+    #recruitment-detail .box-header .company-info .img-logo{
+        width: 100%;
+    }
+
+    #recruitment-detail .title-job{
+        text-align: center;
+        margin: 4px 0;
+    }
+
+    #recruitment-detail .title-job h3{
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #recruitment-detail .title-job span{
+        font-weight: 600;
+        font-size: 20px
+    }
+
+    #recruitment-detail .detail-job .box-info ul li{
+        width: 100%;
+    }
+}
+
+/* dang ki */
+#register .box-content{
+    padding: 16px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    align-items: center;
+    display: flex;
+}
+
+#register .box-content .link-login{
+    display: block;
+    text-align: center;
+    color: orange;
+}
+
+/* trang chi tiet tai khoan */
+#account-information .box-siderbar{
+    background: orange;
+}
+
+#account-information .box-siderbar,
+#account-information .box-content{
+    height: 100vh;
+    overflow: auto;
+}
+
+#account-information-box{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#account-information .account-name h3{
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    border-bottom: 4px solid #fff;
+    padding: 30px 0;
+    margin: 0;
+}
+
+#account-information .account-name .nav-link{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    padding: 8px 0 8px 16px;
+}
+
+#account-information .account-name .nav-link.active{
+    background: #906f05b0;
+}
+
+#account-information .account-name .nav-link:hover{
+    background: #ffc300;
+}
+
+#account-information .box-content .title{
+    color: orange;
+    font-size: 30px;
+    border-bottom: 1px solid orange;
+    padding: 30px 0;
+    margin: 0;
+}
+
+#account-information .box-content form{
+    margin-top: 16px;
+}
+
+#account-information .box-content .btn-update{
+    color: #fff;
+    background: orange;
+}
+/* danh sach tin da tuyen dung */
+#account-information .recruitment-item{
+    margin: 12px 0;
+    display: flex;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background: #f5a00636;
+    padding: 16px;
+    align-items: center;
+}
+
+#account-information .recruitment-item a{
+    display: flex;
+    color: #000;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#account-information .recruitment-item a:hover{
+    color: #000;
+}
+
+#account-information .recruitment-item .img-logo{
+    width: 20%;
+}
+
+#account-information .list-recruiments .job-requirements ul{
+    padding: 0px;
+}
+
+
+#account-information .list-recruiments .job-requirements ul li{
+    padding: 4px 0;
+}
+
+.paginate{
+    display: flex;
+    justify-content: center;
+}
+
+.page-link:hover{
+    color: orange;
+}
+
+@media (max-width: 991.98px) { 
+    #account-information .box-siderbar, #account-information .box-content{
+        height: auto;
+    }
+
+    #account-information .recruitment-item a{
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    #account-information .recruitment-item .img-logo{
+        width: 100%;
+    }
+
+    #account-information .recruitment-item .type,
+    #account-information .recruitment-item .type .btn{
+        width: 100%;
+    }
+}
