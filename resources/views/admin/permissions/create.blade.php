@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="name">Tên hành động
+                                        <label class="col-lg-4 col-form-label" for="name">RouteName
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">

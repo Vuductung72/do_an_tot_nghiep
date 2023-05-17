@@ -2,15 +2,15 @@
 
 @section('title')
     <title>Bảng thay dổi lương</title>
-@endsection 
+@endsection
 
 @section('content')
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Bảng thay dổi lương: {{ Auth::guard('staff')->user()->name }}</h4>
+                <h4 class="card-title">Bảng thay đổi lương: {{ Auth::guard('staff')->user()->name }}</h4>
             </div>
-            
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-responsive-md">

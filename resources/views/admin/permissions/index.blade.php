@@ -20,8 +20,8 @@
                         <thead>
                             <tr>
                                 <th><strong>STT</strong></th>
-                                <th><strong>Tên hành động</strong></th>
-                                <th><strong>Nhãn hành động</strong></th>
+                                <th><strong>RouteName</strong></th>
+                                <th><strong>Mô tả hành động</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>

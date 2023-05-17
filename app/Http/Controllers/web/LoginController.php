@@ -50,13 +50,12 @@ class LoginController extends Controller
             User::create($data);
             DB::commit();
             session()->flash('success', 'Đăng kí thành công');
-            return redirect()->route('w.home');
+            return redirect()->route('w.login');
         } catch (\Throwable $th) {
             DB::rollBack();
             session()->flash('error', 'Đăng kí thất bại');
             return redirect()->back();
         }
-        return view('web.login.register');
     }
 
     public function logout()

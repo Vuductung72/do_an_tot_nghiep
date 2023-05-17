@@ -88,7 +88,7 @@ class PermissionController extends Controller
         try {
             DB::beginTransaction();
             $permission = Permission::find($id);
-            $data = $request->only('name', 'label');
+            $data = $request->only('label');
             $permission->update($data);
             DB::commit();
             session()->flash('success', 'Sửa hành động thành công');

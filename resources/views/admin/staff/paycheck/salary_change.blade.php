@@ -82,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 ms-auto">
-                                    <button type="submit" class="btn btn-primary">Tính lương</button>
+                                    <button type="submit" class="btn btn-primary">Thay đổi</button>
                                     <a href="{{ route('ad.staffs_index') }}" class="btn btn-default">Quay lại</a>
                                 </div>
                             </div>

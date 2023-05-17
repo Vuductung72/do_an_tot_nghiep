@@ -23,12 +23,9 @@ class CheckRolePermission
         if (!Auth::check()) {
             return redirect()->route('ad.login.index');
         }
-        $permissions = Permission::all();
         $roleId = Auth::user('admin')->role->id;
         $role = Role::findOrFail($roleId);
         $permissions = $role->permissions;
-
-
         // $currentRouteName =  Route::getCurrentRoute()->getPath();
         $currentRouteName = Route::currentRouteName();
         // dd($currentRouteName);
