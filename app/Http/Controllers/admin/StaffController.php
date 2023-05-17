@@ -55,7 +55,6 @@ class StaffController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->only('name', 'identityCard', 'ethnic' , 'dateOfBird', 'gender', 'email', 'phone', 'address', 'idPosition', 'idDepartment', 'salary');
-            $data['salary_basic'] = $request->salary;
             $data['password'] = Hash::make($request->password);
             $dataImageStaff = $this->storageTraitUpload($request, 'image', 'ImageStaff');
             $data['image'] = $dataImageStaff['file_path'];
@@ -103,7 +102,7 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         try {
             DB::beginTransaction();
             $staff = Staff::find($id);
@@ -204,7 +203,7 @@ class StaffController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
         }
-    }   
+    }
 
     public function search(Request $request)
     {
@@ -233,7 +232,7 @@ class StaffController extends Controller
 
     public function calculatorSalaryChange(Request $request, $id)
     {
-        
+
         try {
             DB::beginTransaction();
             $staff = Staff::find($id);

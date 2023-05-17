@@ -33,63 +33,12 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="validationCustom01">Hình ảnh
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-6">
-                                            <input type="file" class="form-file-input form-control @error('image') is-invalid @enderror" name="image">
-                                            @error('image')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                        </div>
-                                    </div>
-                                    {{-- giới tính --}}
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="gender">Giới tính
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-6">
-                                            <select class="default-select wide form-control" id="gender" for='gender' name="gender">>
-                                                <option value="1">Nam</option>
-                                                <option value="2">Nữ</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="address">Địa chỉ <span
-                                                class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-6">
-                                            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address"  placeholder="Nhập địa chỉ ..." value="{{ old('address') }}">
-                                            @error('address')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
                                         <label class="col-lg-4 col-form-label" for="validationCustom02">Email <span
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email"  placeholder="Nhập địa chỉ email.." value="{{ old('email') }}">
                                             @error('email')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="validationCustom08">Số điện thoại
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-6">
-                                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" placeholder="Nhập số điện thoại" value="{{ old('phone') }}">
-                                            @error('phone')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -127,7 +76,7 @@
                                             <button type="submit" class="btn btn-primary">Tạo mới</button>
                                             <a href="{{ route('ad.admins_index') }}" class="btn btn-default">Quay lại</a>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                 </div>
                             </div>
                         </form>

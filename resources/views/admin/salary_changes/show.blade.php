@@ -2,7 +2,7 @@
 
 @section('title')
     <title>Xem chi tiết thay đổi lương</title>
-@endsection 
+@endsection
 
 @section('content')
     <div class="col-lg-12">
@@ -45,16 +45,8 @@
                             </div>
                         </div>
                     </div>
-                        
+
                     <div class="col-xl-6">
-                        <div class="mb-3 row">
-                            <label class="col-lg-4 col-form-label" for="salary_basic">Lương ban đầu:</label>
-                            <div class="col-lg-8">
-                                <div class="col-lg-8">
-                                    <input type="text" class="form-control" name="salary_basic" id="salary_basic" value="{{number_format($salary->staff->salary_basic)}}" disabled>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="mb-3 row">
                             <label class="col-lg-4 col-form-label" for="old_salary">Lương cũ:</label>
@@ -73,12 +65,12 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="col-12">
                         {{-- tổng lương --}}
-                        
+
                         <div class="mb-3 row">
                             <label class="col-lg-2 col-form-label" for="reason">Lý do tăng lương</label>
                             <div class="col-lg-10 d-flex align-items-center">
@@ -86,11 +78,11 @@
                             </div>
                         </div>
                     </div>
-                    
- 
+
+
                 </div>
             </div>
-            
+
         </div>
     </div>
 @endsection

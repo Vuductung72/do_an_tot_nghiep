@@ -2,7 +2,7 @@
 
 @section('title')
     <title>Thay đổi lương</title>
-@endsection 
+@endsection
 
 @section('content')
     <div class="col-lg-12">
@@ -44,17 +44,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                        
-                    <div class="col-xl-6">
-                        <div class="mb-3 row">
-                            <label class="col-lg-4 col-form-label" for="id_staff">Lương ban đầu:</label>
-                            <div class="col-lg-8">
-                                <div class="col-lg-8">
-                                    <input type="text" class="form-control" name="id_staff" id="id_staff" value="{{number_format($staff->salary_basic)}}" disabled>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="mb-3 row">
                             <label class="col-lg-4 col-form-label" for="id_staff">Lương cũ:</label>
@@ -64,18 +53,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="mb-3 row">
-                            <label class="col-lg-4 col-form-label" for="id_staff">Hệ số lương:</label>
-                            <div class="col-lg-8">
-                                <div class="col-lg-8">
-                                    <input type="text" class="form-control" name="id_staff" id="id_staff" value="" >
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    
- 
                 </div>
             </div>
 
@@ -95,7 +73,7 @@
                                             <p>= <span>0</span> VND</p>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-lg-2 col-form-label" for="reason">Lý do tăng lương</label>
@@ -112,7 +90,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-responsive-md">
@@ -131,8 +109,8 @@
                                 <tr>
                                     <td><strong>{{ $loop->index +1}}</strong></td>
                                     <td>{{ $item->staff->name }}</td>
-                                    <td>{{ $item->old_salary }}</td>
-                                    <td>{{ $item->new_salary }}</td>
+                                    <td>{{ number_format($item->old_salary) }}</td>
+                                    <td>{{ number_format($item->new_salary) }}</td>
                                     <td>{{ $item->reason }}</td>
                                     <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                 </tr>
@@ -140,11 +118,11 @@
                         </tbody>
                     </table>
                     <div class="pagination justify-content-center">
-                        
+
                     </div>
-                    
+
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -155,7 +133,7 @@
         var today = new Date();
         var month = today.getMonth() + 1; // Lấy tháng hiện tại (tháng bắt đầu từ 0 nên cộng thêm 1)
         var year = today.getFullYear(); // Lấy năm hiện tại
-    
+
         // Gán giá trị tháng và năm vào input
         $('#month').val(month);
         $('#year').val(year);

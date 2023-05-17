@@ -10,10 +10,15 @@
             </li>
 
             <li>
-                <a class="ai-icon" href="{{ route('ad.admins_index')}}" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-text">Quản lí tài khoản admin</span>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <span class="nav-text">Quản lí admin</span>
                 </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('ad.admins_index')}}">Quản lí tài khoản admin</a></li>
+                    <li><a href="{{ route('ad.roles_index') }}">Danh sách vai trò</a></li>
+                    <li><a href="{{ route('ad.permissions_index') }}">Quản lí hành động</a></li>
+                </ul>
             </li>
 
             <li>
@@ -63,18 +68,13 @@
             </li>
 
             <li>
-                <a class="ai-icon" href="{{ route('ad.roles_index') }}" aria-expanded="false">
-                    <i class="fa-solid fa-gear"></i>
-                    <span class="nav-text">Quản lí vai trò</span>
-                </a>
-            </li>
-            
-            <li>
                 <a class="ai-icon" href="{{ route('ad.recruitments_index') }}" aria-expanded="false">
                     <i class="fa-solid fa-newspaper"></i>
                     <span class="nav-text"> Tin tuyển dụng</span>
                 </a>
             </li>
+
+
 
         </ul>
     </div>

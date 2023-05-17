@@ -1,16 +1,16 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    <title>Quản lí Admin</title>
+    <title>Quản lí hành động</title>
 @endsection
 
 @section('content')
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Admins</h4>
+                <h4 class="card-title">Danh sách hành động</h4>
                 <div class="actions">
-                    <a href="{{ route('ad.admins_create') }}" class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Thêm mới</a>
+                    <a href="{{ route('ad.permissions_create')}} " class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Thêm mới</a>
                 </div>
             </div>
 
@@ -20,23 +20,21 @@
                         <thead>
                             <tr>
                                 <th><strong>STT</strong></th>
-                                <th><strong>Tên</strong></th>
-                                <th><strong>Email</strong></th>
-                                <th><strong>Vai trò</strong></th>
+                                <th><strong>Tên hành động</strong></th>
+                                <th><strong>Nhãn hành động</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($admins as $item)
+                            @foreach ($permissions as $item)
                             <tr>
                                 <td><strong>{{ $loop->index +1}}</strong></td>
-                                <td><div class="d-flex align-items-center"><img src="images/avatar/1.jpg" class="rounded-lg me-2" width="24" alt=""/> <span class="w-space-no">{{ $item->name }}</span></div></td>
-                                <td>{{ $item->email }}	</td>
-                                <td>{{ $item->role->name }}</td>
+                                <td>{{ $item->name }}</span></div></td>
+                                <td>{{ $item->label }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('ad.admins_show', ['id' => $item->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="{{ route('ad.admins_destroy', ['id' => $item->id]) }}" data-url="" class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{route('ad.permissions_edit', $item->id)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('ad.permissions_destroy', $item->id) }}" data-url="" class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -44,7 +42,7 @@
                         </tbody>
                     </table>
                     <div class="pagination justify-content-center">
-                        {{ $admins->links() }}
+                        {{ $permissions->links() }}
                     </div>
                 </div>
             </div>

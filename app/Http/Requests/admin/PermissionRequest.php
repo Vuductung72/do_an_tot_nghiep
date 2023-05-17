@@ -13,7 +13,7 @@ class PermissionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class PermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:permissions',
+            'label' => 'required|unique:permissions',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Tên hành động không được để trống',
+            'name.unique' => 'Tên hành động đã tồn tại',
+            'label.required' => 'Mô tả hành động là trường bắt buộc nhập',
+            'label.unique' => 'Mô tả hành động  đã tồn tại',
+
         ];
     }
 }

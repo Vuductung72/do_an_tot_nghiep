@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\DisciplinesController;
 use App\Http\Controllers\admin\DisciplinesTypeController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\PositionController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\StaffController;
@@ -33,15 +34,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
+Route::get('/login', [LoginController::class, 'index'])->name('ad.login.index');
+Route::post('/login', [LoginController::class, 'login'])->name('ad.login');
 
-Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin'], function () { 
+Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'middleware' => 'checkrole'], function () {
 
-    Route::get('/', [LoginController::class, 'index'])->name('login.index');
-    Route::post('/', [LoginController::class, 'login'])->name('login');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout'); 
 
-    Route::get('/trang-chu', [HomeController::class, 'index'])->name('index');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/', [HomeController::class, 'index'])->name('index');
 
     Route::prefix('tai-khoan-quan-tri')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admins_index');
@@ -51,7 +52,7 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin'], func
         Route::post('/update/{id}', [AdminController::class, 'update'])->name('admins_update');
         Route::get('/destroy/{id}', [AdminController::class, 'destroy'])->name('admins_destroy');
     });
-    
+
     Route::prefix('phong-ban')->group(function () {
         Route::get('/', [DepartmentController::class, 'index'])->name('departments_index');
         Route::get('/them', [DepartmentController::class, 'create'])->name('departments_create');
@@ -84,7 +85,7 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin'], func
         Route::get('/thay-doi-luong/{id}', 'StaffController@salaryChange')->name('staffs_change');
         Route::post('/thay-doi-luong/{id}' , 'StaffController@calculatorSalaryChange')->name('staffs_calculatorSalaryChange');
 
-        
+
     });
 
     Route::prefix('danh-sach-bang-luong')->group(function () {
@@ -169,13 +170,22 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin'], func
         Route::get('/tim-kiem', 'RecruitmentController@search')->name('recruitments_search');
     });
 
+    Route::prefix('hanh-dong')->group(function () {
+        Route::get('/', [PermissionController::class, 'index'])->name('permissions_index');
+        Route::get('/them', [PermissionController::class, 'create'])->name('permissions_create');
+        Route::post('/store', [PermissionController::class, 'store'])->name('permissions_store');
+        Route::get('/chi-tiet/{id}', [PermissionController::class, 'edit'])->name('permissions_edit');
+        Route::post('/update/{id}', [PermissionController::class, 'update'])->name('permissions_update');
+        Route::get('/destroy/{id}', [PermissionController::class, 'destroy'])->name('permissions_destroy');
+    });
+
 });
 
-Route::group(['prefix' => '/staff', 'as' => 'staff.', 'namespace' => 'Staff'], function () { 
+Route::group(['prefix' => '/staff', 'as' => 'staff.', 'namespace' => 'Staff'], function () {
 
     Route::get('/', [StaffLoginController::class, 'index'])->name('login.index');
     Route::post('/', [StaffLoginController::class, 'login'])->name('login');
-    Route::get('/logout', [StaffLoginController::class, 'logout'])->name('logout'); 
+    Route::get('/logout', [StaffLoginController::class, 'logout'])->name('logout');
 
     Route::prefix('nhan-vien')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('accounts_index');
@@ -215,7 +225,7 @@ Route::post('/dang-nhap',[WebLoginController::class, 'login'] )->name('w.login.l
 Route::get('/dang-ky',[WebLoginController::class, 'getRegister'] )->name('w.register');
 Route::post('/dang-ky',[WebLoginController::class, 'register'] )->name('w.register.store');
 
-Route::group(['as' => 'w.', 'namespace' => 'Web'], function () { 
+Route::group(['as' => 'w.', 'namespace' => 'Web'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/tuyen-dung', [WebRecruitmentController::class, 'index'])->name('recruitment');
     Route::get('/tin-tuyen-dung/{id}', [WebRecruitmentController::class, 'show'])->name('recruitment.show');
@@ -223,6 +233,6 @@ Route::group(['as' => 'w.', 'namespace' => 'Web'], function () {
     Route::get('/thong-tin-tai-khoan', 'AccountController@index')->name('account.index');
     Route::post('/thong-tin-tai-khoan/update/{user}', 'AccountController@update')->name('account.update');
     Route::get('/danh-sach-ung-tuyen', 'AccountController@listRecruitment')->name('account.list.recruitment');
-    Route::get('/logout', [WebLoginController::class, 'logout'])->name('logout'); 
+    Route::get('/logout', [WebLoginController::class, 'logout'])->name('logout');
 });
 

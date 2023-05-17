@@ -29,7 +29,7 @@
     @stack('css')
 
 	<script src="{{ asset('global/plugins/sweetalert2@11.js') }}"></script>
-	
+
 </head>
 <body>
 
@@ -56,8 +56,8 @@
 
         @include(' admin.layouts.includes.header')
 
-        @include('admin.layouts.includes.siderbar')        
-		
+        @include('admin.layouts.includes.siderbar')
+
 		<!--Content body start-->
         <div class="content-body">
             @yield('content')
@@ -78,19 +78,19 @@
     <script src="{{ asset('admins/vendor/global/global.min.js') }}"></script>
 	<script src="{{ asset('admins/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 	<script src="{{ asset('admins/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-	<script src="{{ asset('admins/vendor/owl-carousel/owl.carousel.js') }}"></script>		
-	
+	<script src="{{ asset('admins/vendor/owl-carousel/owl.carousel.js') }}"></script>
+
 	<!-- Chart piety plugin files -->
     <script src="{{ asset('admins/vendor/peity/jquery.peity.min.js') }}"></script>
-	
+
 	<!-- Apex Chart -->
 	<script src="{{ asset('admins/vendor/apexchart/apexchart.js') }}"></script>
-	
+
 	<!-- Dashboard 1 -->
 	<script src="{{ asset('admins/js/dashboard/dashboard-1.js') }}"></script>
 
-	
-	
+
+
     <script src="{{ asset('admins/js/custom.min.js') }}"></script>
 	<script src="{{ asset('admins/js/deznav-init.js') }}"></script>
 	<!-- Jquery Validation -->
@@ -109,7 +109,8 @@
 
     @stack('scripts')
 
-	
+    
+
 </body>
 
 <!-- Mirrored from mophy.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Jan 2023 10:46:39 GMT -->

@@ -45,13 +45,37 @@
                                             @enderror
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3 row">
+                                        <label for="permissions">Permissions</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="checkall" id="checkall" value="" class="cb-element">
+                                            <label class="form-check-label" for="checkall">
+                                                Chọn tất cả
+                                            </label>
+                                        </div>
+
+                                        @foreach($permissions as $permission)
+                                            <div class="form-check" style="width: 25%">
+                                                <input class="form-check-input checkbox" type="checkbox" name="permissions[]" id="permission_{{ $permission->id }}" value="{{ $permission->id }}">
+                                                <label class="form-check-label" for="permission_{{ $permission->id }}">
+                                                    {{ $permission->label }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
                                     <div class="mb-3 row">
                                         <div class="col-lg-8 ms-auto">
                                             <button type="submit" class="btn btn-primary">Tạo mới</button>
                                             <a href="{{ route('ad.roles_index') }}" class="btn btn-default">Quay lại</a>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -61,3 +85,36 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        // This is the second section with checkbox
+    $(document).ready(function() {
+
+        // Select With Checkbox(Extra Feature)
+        $("#checkall").change(function() {
+            var checked = $(this).is(":checked");
+            if (checked) {
+            $(".checkbox").each(function() {
+                $(this).prop("checked", true);
+            });
+            } else {
+            $(".checkbox").each(function() {
+                $(this).prop("checked", false);
+            });
+            }
+        });
+
+        // Changing state of CheckAll checkbox
+        $(".checkbox").click(function() {
+            if ($(".checkbox").length == $(".checkbox:checked").length) {
+            $("#checkall").prop("checked", true);
+            } else {
+            // $("#checkall").removeAttr("checked");
+            $("#checkall").prop("checked", false);
+            }
+        });
+    });
+    </script>
+
+@endpush

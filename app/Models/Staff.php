@@ -18,7 +18,7 @@ class Staff extends Authenticatable
     ];
 
     protected $fillable = [
-        'name', 'identityCard', 'image', 'ethnic' , 'dateOfBird', 'gender', 'email', 'phone', 'address', 'idPosition', 'idDepartment','salary_basic', 'salary' , 'password', 'status'
+        'name', 'identityCard', 'image', 'ethnic' , 'dateOfBird', 'gender', 'email', 'phone', 'address', 'idPosition', 'idDepartment', 'salary' , 'password', 'status'
     ];
 
     /**

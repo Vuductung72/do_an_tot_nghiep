@@ -117,8 +117,8 @@ fieldset {
     outline: none;
 }
 
-.btn.focus, 
-.btn:focus, 
+.btn.focus,
+.btn:focus,
 .btn:hover {
     color: #fff;
 }
@@ -368,7 +368,7 @@ header .login .info-menu .info-menu-list a:hover{
 #introduce .title,
 #recruitment .title,
 #recruitment-detail .title,
-#register .title, 
+#register .title,
 #home-recruitments .title,
 #how-to-apply .title{
     color: orange;
@@ -458,7 +458,7 @@ header .login .info-menu .info-menu-list a:hover{
 }
 
 
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     .content {
         margin-top: 90px;
         margin-bottom: 20px;
@@ -561,11 +561,11 @@ footer .copyright{
     justify-content: center;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     #introduce .title,
     #recruitment .title,
     #recruitment-detail .title,
-    #register .title, 
+    #register .title,
     #home-recruitments .title{
         font-size: 24px;
     }
@@ -626,7 +626,7 @@ footer .copyright{
     padding: 16px 16px 0;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     #recruitment-detail .box-header, #recruitment-detail .box-header .company-info{
         flex-direction: column;
     }
@@ -775,7 +775,7 @@ footer .copyright{
     color: orange;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     #account-information .box-siderbar, #account-information .box-content{
         height: auto;
     }

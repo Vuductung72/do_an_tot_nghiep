@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -47,10 +47,8 @@ class AdminController extends Controller
     {
         try {
             DB::beginTransaction();
-            $data = $request->only('name', 'gender', 'email', 'phone', 'address', 'role_id');
+            $data = $request->only('name', 'email', 'role_id');
             $data['password'] = Hash::make($request->password);
-            $dataImageAdmin = $this->storageTraitUpload($request, 'image', 'ImageAdmin');
-            $data['image'] = $dataImageAdmin['file_path'];
             Admin::create($data);
             DB::commit();
             session()->flash('success', 'Thêm tài khoản admin thành công');
@@ -86,15 +84,11 @@ class AdminController extends Controller
         try {
             DB::beginTransaction();
             $admin = Admin::find($id);
-            $data = $request->only('name', 'gender', 'phone', 'address', 'role_id');
+            $data = $request->only('name', 'role_id');
             if ($request->password) {
                 $data['password'] = Hash::make($request->password);
             }else{
                 $data['password'] = $admin->password;
-            }
-            $dataImageAdmin = $this->storageTraitUpload($request, 'image', 'ImageAdmin');
-            if( !empty($dataImageAdmin) ) {
-                $data['image'] = $dataImageAdmin['file_path'];
             }
             $admin->update($data);
             DB::commit();

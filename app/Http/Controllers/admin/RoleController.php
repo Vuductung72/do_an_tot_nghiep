@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\RoleRequest;
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.role.create');
+        $permissions = Permission::all();
+        return view('admin.role.create', compact('permissions'));
     }
 
     /**
@@ -42,10 +44,11 @@ class RoleController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->only('name', 'display_name');
-            Role::create($data);
+            $role = Role::create($data);
+            $role->permissions()->attach($request->permissions);
             DB::commit();
             session()->flash('success', 'Thêm vai trò thành công');
-            return redirect()->route('ad.recruitments_index');
+            return redirect()->route('ad.roles_index');
         } catch (\Exception $e) {
             DB::rollBack();
             session()->flash('error', 'Thêm vai trò thất bại');
@@ -73,7 +76,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        return view('admin.role.edit', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.role.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -90,6 +94,7 @@ class RoleController extends Controller
             $role = Role::find($id);
             $data = $request->only('name', 'display_name');
             $role->update($data);
+            $role->permissions()->sync($request->permissions);
             DB::commit();
             session()->flash('success', 'Sửa vai trò thành công');
             return redirect()->route('ad.roles_index');
@@ -109,6 +114,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $role = Role::find($id);
+        $role->permissions()->detach();
         $role->delete();
         session()->flash('success', 'Xóa vai trò thành công');
         return redirect()->back();
