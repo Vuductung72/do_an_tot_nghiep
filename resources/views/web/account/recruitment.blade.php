@@ -1,6 +1,6 @@
 @extends('web.layouts.master')
 
-@section('title')   
+@section('title')
     <title>Tin đã ứng tuyển</title>
 @endsection
 
@@ -15,7 +15,7 @@
                         @if ($applys->count())
                             @foreach ($applys as $item)
                                 <li class="recruitment-item">
-                                    <a href="{{route('w.recruitment.show', ['id' => $item->recruitment->id])}}" class="recruiments-link">
+                                    <a href="{{route('w.recruitment.show', ['slug' => $item->recruitment->slug])}}" class="recruiments-link">
                                         <div class="img-logo">
                                             <img src="{{asset('admins/images/logo_net5s.png')}}" alt="">
                                         </div>
@@ -50,7 +50,7 @@
                             <h3 class="text-center">Bạn chưa ứng tuyển tin tuyển dụng nào</h3>
                             <p class="text-center">Vào <a href="{{route('w.recruitment')}}" class="page-link">trang tin tuyển dụng</a> để ứng tuyển</p>
                         @endif
-                        
+
                     </ul>
                 </div>
             </div>

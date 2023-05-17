@@ -10,6 +10,6 @@ class Recruitment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'position', 'experience', 'quantity', 'wage', 'type_work', 'type', 'description'
+        'title','slug', 'position', 'experience', 'quantity', 'wage', 'type_work', 'type', 'description'
     ];
 }

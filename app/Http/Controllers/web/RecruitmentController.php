@@ -27,9 +27,9 @@ class RecruitmentController extends Controller
         return view('web.recruitment.index', compact('recruitments'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $recruitment = Recruitment::find($id);
+        $recruitment = Recruitment::where('slug', $slug)->first();
         if($recruitment->type == 0){
             session()->flash('warning', 'Tin tuyển dụng này đã bị ẩn!');
             return redirect()->route('w.recruitment');
@@ -67,5 +67,5 @@ class RecruitmentController extends Controller
         }
     }
 
-    
+
 }

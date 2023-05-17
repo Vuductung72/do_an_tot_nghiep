@@ -8,6 +8,7 @@ use App\Models\ApplyRecruitment;
 use App\Models\Recruitment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class RecruitmentController extends Controller
 {
@@ -44,6 +45,7 @@ class RecruitmentController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->only('title', 'position', 'experience', 'quantity', 'wage', 'type_work', 'type', 'description');
+            $data['slug'] = Str::slug($request->title);
             Recruitment::create($data);
             DB::commit();
             session()->flash('success', 'Thêm tin tuyển dụng thành công');
@@ -93,6 +95,7 @@ class RecruitmentController extends Controller
             DB::beginTransaction();
             $recruitment = Recruitment::find($id);
             $data = $request->only('title', 'position', 'experience', 'quantity', 'wage', 'type_work', 'type', 'description');
+            $data['slug'] = Str::slug($request->title);
             $recruitment->update($data);
             DB::commit();
             session()->flash('success', 'Sửa tin tuyển dụng thành công');
@@ -147,7 +150,7 @@ class RecruitmentController extends Controller
         $recruitments = Recruitment::When($name, function($query, $name){
             return $query->where('title', 'like', '%'.$name.'%');
         })->orderBy('id', 'DESC')->paginate(5);;
-        
+
         return view('admin.recruitments.index', compact('recruitments', 'applyCount', 'name'));
 
     }

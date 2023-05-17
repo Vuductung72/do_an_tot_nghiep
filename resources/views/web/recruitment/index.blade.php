@@ -1,6 +1,6 @@
 @extends('web.layouts.master')
 
-@section('title')   
+@section('title')
     <title>Tin tuyển dụng</title>
 @endsection
 
@@ -12,7 +12,7 @@
                 @if ($recruitments->count() != 0)
                     @foreach ($recruitments as $item)
                         <li class="recruitment-item">
-                            <a href="{{route('w.recruitment.show', ['id' => $item->id])}}">
+                            <a href="{{route('w.recruitment.show', ['slug' => $item->slug])}}">
                                 <div class="img-logo">
                                     <img src="{{asset('admins/images/logo_net5s.png')}}" alt="">
                                 </div>
@@ -52,7 +52,7 @@
                                         <div class="type">
                                             <button class="btn btn-success" disabled>Yêu cầu của bạn đã được xác nhận</button>
                                         </div>
-                                    @endif 
+                                    @endif
                                 @endif
                             @else
                                 <div class="type">
@@ -67,7 +67,7 @@
                 @else
                     <h3 class="text-center">Hiện tại không có tin tuyển dụng nào!</h3>
                 @endif
-                
+
             </ul>
             <div class="paginate">
                 {{ $recruitments->links() }}

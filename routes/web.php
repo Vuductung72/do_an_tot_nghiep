@@ -228,7 +228,7 @@ Route::post('/dang-ky',[WebLoginController::class, 'register'] )->name('w.regist
 Route::group(['as' => 'w.', 'namespace' => 'Web'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/tuyen-dung', [WebRecruitmentController::class, 'index'])->name('recruitment');
-    Route::get('/tin-tuyen-dung/{id}', [WebRecruitmentController::class, 'show'])->name('recruitment.show');
+    Route::get('/tin-tuyen-dung/{slug}', [WebRecruitmentController::class, 'show'])->name('recruitment.show');
     Route::post('/ung-tuyen/{id}', [WebRecruitmentController::class, 'recruitment'])->name('recruitment.recruitment');
     Route::get('/thong-tin-tai-khoan', 'AccountController@index')->name('account.index');
     Route::post('/thong-tin-tai-khoan/update/{user}', 'AccountController@update')->name('account.update');
