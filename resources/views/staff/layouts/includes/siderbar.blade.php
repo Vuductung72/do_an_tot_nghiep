@@ -4,7 +4,7 @@
         <ul class="metismenu" id="menu">
             <li>
                 <a class="ai-icon" href="{{ route('staff.accounts_index') }}" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
+                    <i class="fa-solid fa-circle-info"></i>
                     <span class="nav-text">Thông tin nhân viên</span>
                 </a>
             </li>
@@ -18,7 +18,7 @@
 
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-controls-3"></i>
+                    <i class="fa-solid fa-award"></i>
                     <span class="nav-text">Khen thưởng - kỉ luật</span>
                 </a>
                 <ul aria-expanded="false">
@@ -28,24 +28,15 @@
             </li>
 
             <li>
-                <a class="ai-icon" href="{{ route('staff.allowances_index') }}" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
-                    <span class="nav-text">Thông tin phụ cấp</span>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <span class="nav-text">Lương, phụ cấp</span>
                 </a>
-            </li>
-
-            <li>
-                <a class="ai-icon" href="{{ route('staff.paycheck_index') }}" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
-                    <span class="nav-text">Bảng lương</span>
-                </a>
-            </li>
-
-            <li>
-                <a class="ai-icon" href="{{route('staff.salary_index')}}" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
-                    <span class="nav-text">Thay đổi lương</span>
-                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('staff.paycheck_index') }}">Bảng lương</a></li>
+                    <li><a href="{{ route('staff.salary_index') }}">Thay đổi lương</a></li>
+                    <li><a href="{{ route('staff.allowances_index') }}">Phụ cấp</a></li>
+                </ul>
             </li>
 
         </ul>

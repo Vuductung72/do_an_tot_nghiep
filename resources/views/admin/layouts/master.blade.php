@@ -109,7 +109,7 @@
 
     @stack('scripts')
 
-    
+
 
 </body>
 

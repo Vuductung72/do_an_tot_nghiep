@@ -1,7 +1,7 @@
 @extends('web.layouts.master')
 
-@section('title')   
-    <title>Đăng kí tài khoản</title>
+@section('title')
+    <title>Đăng nhập tài khoản</title>
 @endsection
 
 @section('content')
@@ -38,7 +38,7 @@
                         <button type="submit" class="btn btn-primary">Đăng Nhập</button>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </section>
