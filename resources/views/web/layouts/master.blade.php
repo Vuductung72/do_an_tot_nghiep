@@ -14,7 +14,7 @@
     <!-- Site title -->
     @yield('title')
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('web/assets/img/logo_net5s.png')}}">
 
     <!-- Bootstrap css -->
     <link href="{{asset('web/assets/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -43,22 +43,22 @@
 
     {{-- check erorrs of web  --}}
     @include('admin.components.errors')
-    
+
 
     @include('web.layouts.includes.header')
     <!-- Navigation area starts -->
-    
+
     <!-- Navigation area ends -->
 
     <!-- Slider area starts -->
-    
+
     <!-- Slider area ends -->
 
     <!-- About area starts -->
     <div class="content">
         @yield('content')
     </div>
-    
+
     <!-- Footer area starts -->
     @include('web.layouts.includes.footer')
     <!-- Footer area ends -->

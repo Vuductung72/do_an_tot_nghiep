@@ -26,7 +26,7 @@ class DisciplinesController extends Controller
         $departments = Department::all();
         $positions = Position::all();
         $disciplines = Discipline::orderBy('id', 'DESC')->paginate(10);
-        
+
         return view('admin.disciplines.index', compact('staff', 'disciplines', 'disciplineTypes', 'departments', 'positions'));
     }
 
@@ -142,7 +142,7 @@ class DisciplinesController extends Controller
             });
         })->when($position, function($query) use ($position){
             return $query->whereHas('staff', function($query) use ($position){
-                return $query->where('idDepartment', $position);
+                return $query->where('idPosition', $position);
             });
         })->orderBy('id', 'desc')->paginate(10);
 

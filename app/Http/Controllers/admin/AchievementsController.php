@@ -142,15 +142,15 @@ class AchievementsController extends Controller
             });
         })->when($position, function($query) use ($position){
             return $query->whereHas('staff', function($query) use ($position){
-                return $query->where('idDepartment', $position);
+                return $query->where('idPosition', $position);
             });
         })->orderBy('id', 'desc')->paginate(10);
 
         return view('admin.achievements.index', compact('staff', 'achievements', 'achievementTypes', 'departments', 'positions', 'name', 'department', 'position'));
     }
 
-    
 
-    
+
+
 
 }

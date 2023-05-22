@@ -33,6 +33,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'laravel-filemanager'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('ad.login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('ad.login');

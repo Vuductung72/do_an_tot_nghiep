@@ -2,7 +2,7 @@
 
 @section('title')
     <title>Danh sách bảng lương</title>
-@endsection 
+@endsection
 
 @section('content')
     <div class="col-lg-12">
@@ -22,7 +22,7 @@
                                         <select id="department" class="default-select form-control wide" name="department" tabindex="null">
                                             <option selected value="">Chọn...</option>
                                             @foreach ($departments as $item)
-                                            <option value="{{ $item->id }}" {{isset($department) ?? $item->id === $department ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                <option value="{{ $item->id }}" {{isset($department) ?? $item->id === $department ? 'selected' : ''}}>{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-responsive-md">

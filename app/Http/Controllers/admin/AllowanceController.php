@@ -136,7 +136,7 @@ class AllowanceController extends Controller
             });
         })->when($position, function($query) use ($position){
             return $query->whereHas('staff', function($query) use ($position){
-                return $query->where('idDepartment', $position);
+                return $query->where('idPosition', $position);
             });
         })->orderBy('id', 'desc')->paginate(10);
 
