@@ -1,6 +1,6 @@
 @extends('web.layouts.master')
 
-@section('title')   
+@section('title')
     <title>Thông tin tài khoản</title>
 @endsection
 
@@ -11,7 +11,7 @@
             <div class="col-12 col-lg-8">
                 <div class="box-content">
                     <h3 class="title">Thông tin tài khoản của bạn</h3>
-                    <form action="{{ route('w.account.update', Auth::guard('user')->user()) }}" method="POST">
+                    <form action="{{ route('w.account.update', Auth::guard('user')->user()) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Họ và tên:</label>
@@ -22,7 +22,13 @@
                                 </small>
                             @enderror
                         </div>
-    
+
+                        {{-- cv --}}
+                        <div class="form-group">
+                            <label for="cv">CV</label>
+                            <input type="file" class="form-file-input form-control" name="cv">
+                        </div>
+
                         <div class="form-group">
                             <label for="gender">Giới tính</label>
                             <select class="form-control" id="gender" for='gender' name="gender">>
@@ -34,7 +40,7 @@
                                 @endif
                             </select>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Nhập địa chỉ email ..." value="{{Auth::guard('user')->user()->email}}" disabled>
@@ -44,7 +50,7 @@
                                 </small>
                             @enderror
                         </div>
-    
+
                         <div class="form-group">
                             <label for="address">Địa chỉ</label>
                             <input type="text" class="form-control" name="address" id="address" placeholder="Nhập địa chỉ địa chỉ ..." value="{{Auth::guard('user')->user()->address}}">
@@ -54,7 +60,7 @@
                                 </small>
                             @enderror
                         </div>
-    
+
                         <div class="form-group">
                             <label for="phone">Số điện thoại</label>
                             <input type="text" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại ..." value="{{Auth::guard('user')->user()->phone}}">
@@ -64,7 +70,7 @@
                                 </small>
                             @enderror
                         </div>
-    
+
                         <div class="form-group">
                             <label for="password">Mật khẩu</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Nhập mật khẩu...">
@@ -74,7 +80,7 @@
                                 </small>
                             @enderror
                         </div>
-    
+
                         <div class="form-group">
                             <label for="re-password">Nhập lại mật khẩu</label>
                             <input type="re-password" class="form-control" name="re-password" id="re-password" placeholder="Nhập lại mật khẩu...">

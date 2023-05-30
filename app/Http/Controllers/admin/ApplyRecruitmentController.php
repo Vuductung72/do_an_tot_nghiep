@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\ApplyRecruitment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ApplyRecruitmentController extends Controller
 {
@@ -48,8 +49,24 @@ class ApplyRecruitmentController extends Controller
     public function show($id)
     {
         $apply = ApplyRecruitment::find($id);
-        return view('admin.recruitments.show_apply', compact('apply'));
+        $cv = $apply->user->cv;
+        return view('admin.recruitments.show_apply', compact('apply', 'cv'));
     }
+
+    public function download($id)
+    {
+        $apply = ApplyRecruitment::find($id);
+        $fileCV = $apply->user->cv;
+        $fileName = basename($fileCV);
+        $file=Storage::disk('public')->get('cv_user/'.$fileName);
+
+        return (response($file, 200))
+              ->header('Content-Type', 'image/pdf');
+
+        return redirect()->route('ad.apply_recruitments_show', $id);
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.

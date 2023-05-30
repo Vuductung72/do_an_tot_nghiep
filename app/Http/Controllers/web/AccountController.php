@@ -27,12 +27,16 @@ class AccountController extends Controller
         return redirect()->route('w.home');
     }
 
-    
+
     public function update(UpdateAccountRequest $request, User $user)
     {
         try {
             DB::beginTransaction();
             $data = $request->only('name','gender','phone','address');
+            if($request->hasFile('cv')){
+                $dataCv = $this->storageTraitUpload($request, 'cv', 'cv_user');
+                $data['cv'] = $dataCv['file_path'];
+            }
             if ($request->password) {
                 $data['password'] = Hash::make($request->password);
             }else{
@@ -46,6 +50,7 @@ class AccountController extends Controller
             DB::rollback();
             session()->flash('error', 'Cập nhật tài khoản thất bại');
             return redirect()->back();
+            // dd($data['cv']);
         }
     }
 

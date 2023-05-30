@@ -35,9 +35,7 @@
                                 </div>
                                 {{-- email --}}
                                 <div class="mb-3 row">
-                                    <label class="col-lg-4 col-form-label" for="email">Email <span
-                                            class="text-danger">*</span>
-                                    </label>
+                                    <label class="col-lg-4 col-form-label" for="email">Email </label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="email" id="email" value="{{ $apply->user->email }}" disabled>
                                     </div>
@@ -51,18 +49,24 @@
                                 </div>
                                 {{-- dia chi --}}
                                 <div class="mb-3 row">
-                                    <label class="col-lg-4 col-form-label" for="address">Địa chỉ <span
-                                            class="text-danger">*</span>
-                                    </label>
+                                    <label class="col-lg-4 col-form-label" for="address">Địa chỉ </label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="address" id="address" value="{{ $apply->user->address }}" disabled>
                                     </div>
                                 </div>
+
+                                {{-- cv --}}
+                                <div class="mb-3 row">
+                                    <label class="col-lg-4 col-form-label" for="cv">cv</label>
+                                    <div class="col-lg-6">
+                                        <a href="{{route('ad.show_cv', ['id'=>$apply->id])}}" target="_blank">Xem CV</a>
+                                        <a href="{{ route('ad.download_cv', ['id' => $apply->id]) }}">Tải về CV</a>
+                                    </div>
+                                </div>
+
                                 {{-- trang thai --}}
                                 <div class="mb-3 row">
-                                    <label class="col-lg-4 col-form-label" for="type">Trạng thái <span
-                                            class="text-danger">*</span>
-                                    </label>
+                                    <label class="col-lg-4 col-form-label" for="type">Trạng thái </label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="type" id="type" value="{{ $apply->type === 0 ? 'Chưa xác nhận' : 'Đã xác nhận' }}" disabled>
                                     </div>
@@ -74,7 +78,7 @@
                                             <form id="status-form" action="{{ route('ad.recruitments_status_apply', ['id'=> $apply->id]) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">
-                                                    Chưa xác nhận
+                                                    Xác nhận
                                                 </button>
                                             </form>
                                         @else
@@ -82,9 +86,9 @@
                                                 Đã xác nhận
                                             </button>
                                         @endif
-                                        <a href="{{ route('ad.recruitments_edit', ['id' => $apply->recruitment_id]) }}" class="btn btn-primary">Quay lại</a>
+                                        <a href="{{ route('ad.recruitments_edit', ['id' => $apply->recruitment_id]) }}" class="btn btn-default">Quay lại</a>
                                     </div>
-                                </div>                                  
+                                </div>
                             </div>
                         </div>
                     </div>

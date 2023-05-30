@@ -47,15 +47,22 @@ class RecruitmentController extends Controller
     {
         if (Auth::guard('user')->check()) {
             try {
-                DB::beginTransaction();
-                $recruitment = Recruitment::find($id);
-                $data['user_id'] = Auth::guard('user')->user()->id;
-                $data['recruitment_id'] = $recruitment->id;
-                $data['status'] = 0;
-                ApplyRecruitment::create($data);
-                DB::commit();
-                session()->flash('success', 'Ứng tuyển thành công');
-                return redirect()->back();
+                if(Auth::guard('user')->user()->cv === null){
+                    session()->flash('info', 'Bạn cần thêm cv để ứng tuyển!');
+                    return redirect()->route('w.account.index');
+                }
+                else{
+                    DB::beginTransaction();
+                    $recruitment = Recruitment::find($id);
+                    $data['user_id'] = Auth::guard('user')->user()->id;
+                    $data['recruitment_id'] = $recruitment->id;
+                    $data['status'] = 0;
+                    ApplyRecruitment::create($data);
+                    DB::commit();
+                    session()->flash('success', 'Ứng tuyển thành công');
+                    return redirect()->back();
+                }
+
             } catch (\Throwable $th) {
                 DB::rollBack();
                 session()->flash('error', 'Ứng tuyển thất bại');

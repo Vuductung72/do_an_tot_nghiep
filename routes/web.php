@@ -40,7 +40,9 @@ Route::group(['prefix' => 'laravel-filemanager'], function () {
 Route::get('/login', [LoginController::class, 'index'])->name('ad.login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('ad.login');
 
-Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'middleware' => 'checkrole'], function () {
+
+
+Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin'], function () {
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -170,6 +172,7 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::post('/status-apply/{id}', 'RecruitmentController@statusApplyRecruitment')->name('recruitments_status_apply');
         Route::get('/thong-tin-nguoi-tuyen-dung/{id}', 'ApplyRecruitmentController@show')->name('apply_recruitments_show');
         Route::get('/tim-kiem', 'RecruitmentController@search')->name('recruitments_search');
+        Route::get('/download/{id}', 'ApplyRecruitmentController@download')->name('download_cv');
     });
 
     Route::prefix('hanh-dong')->group(function () {
