@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\AllowanceRequest;
 use App\Http\Requests\admin\StaffRequest;
 use App\Models\Allowance;
 use App\Models\Attendance;
@@ -254,6 +255,31 @@ class StaffController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
             session()->flash('error', 'Tính lương thất bại');
+            return redirect()->back();
+        }
+    }
+
+    public function allowance($id)
+    {
+        $staff = Staff::find($id);
+        $allowances = Allowance::where('idStaff', '=' , $id)->orderBY('created_at', 'DESC')->paginate(5);
+        return view('admin.staff.paycheck.allowance', compact('staff', 'allowances'));
+    }
+
+    public function postAllowance(AllowanceRequest $request, $id)
+    {
+        try {
+            DB::beginTransaction();
+            $staff = Staff::find($id);
+            $data = $request->only('name', 'money', 'description');
+            $data['idStaff'] = $staff->id;
+            Allowance::create($data);
+            DB::commit();
+            session()->flash('success', 'Thêm phụ cấp thành công');
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            session()->flash('error', 'Thêm phụ cấp thất bại');
             return redirect()->back();
         }
     }

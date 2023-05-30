@@ -75,6 +75,7 @@
                                 <th><strong>Chức vụ</strong></th>
                                 <th><strong>Trạng thái</strong></th>
                                 <th><strong>Bảng công</strong></th>
+                                <th><strong>Phụ cấp</strong></th>
                                 <th><strong>Bảng lương</strong></th>
                                 <th><strong>Lương</strong></th>
                                 <th><strong>Action</strong></th>
@@ -92,6 +93,7 @@
                                 <td>{{ $item->position->name }}</td>
                                 <td>{{ $item->status == 0 ? 'Đang làm việc' : 'Đã nghỉ việc' }}</td>
                                 <td><a href="{{route('ad.staffs_attendance', ['id' => $item->id])}}">Bảng công</a></td>
+                                <td><a href="{{route('ad.staffs_allowance', ['id' => $item->id])}}">Phụ cấp</a></td>
                                 <td><a href="{{route('ad.staffs_litspaycheck', ['id' => $item->id])}}">Tính lương</a></td>
                                 <td><a href="{{route('ad.staffs_change', ['id' => $item->id])}}">Lương</a></td>
                                 <td>

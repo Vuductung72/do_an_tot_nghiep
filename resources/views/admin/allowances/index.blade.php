@@ -9,9 +9,6 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Danh sách phụ cấp</h4>
-                <div class="actions">
-                    <a href="{{ route('ad.allowances_create')}} " class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Thêm mới</a>
-                </div>
             </div>
 
             <div class="card-body">

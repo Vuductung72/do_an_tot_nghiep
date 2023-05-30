@@ -15,6 +15,27 @@
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                {{-- tên --}}
+                                <div class="col-xl-4 mb-3">
+                                    <div class="row"></div>
+                                    <label for="name">Tên nhân viên:</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{$allowance->staff->name}}" disabled>
+                                </div>
+
+                                <div class="col-xl-4 mb-3">
+                                    <label for="idPosition">Chức vụ:</label>
+                                    <input type="text" class="form-control" name="idPosition" id="idPosition" value="{{$allowance->staff->position->name}}" disabled>
+                                </div>
+
+                                <div class="col-xl-4 mb-3">
+                                    <label for="idDepartment">Phòng bán:</label>
+                                    <input type="text" class="form-control" name="idDepartment" id="idDepartment" value="{{$allowance->staff->department->name}}" disabled>
+                                </div>
+                            </div>
+
+                        </div>
                         <form class="needs-validation" enctype="multipart/form-data" action="{{ route('ad.allowances_update', ['id' => $allowance->id ]) }}" novalidate method="POST">
                             @csrf
                             <div class="row">
@@ -34,20 +55,6 @@
                                         </div>
                                     </div>
 
-                                    {{-- nhân viên --}}
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="idStaff">Nhân viên
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-6">
-                                            <select class="default-select wide form-control" for='idStaff' name="idStaff">>
-                                                @foreach ($staffs as $item)
-                                                    <option value="{{ $item->id }}" {{ $item->id == $allowance->staff->id ? 'selected' : '' }}>{{ $item->name }} - Phòng: {{ $item->department->name }} - Chức vụ: {{ $item->position->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
- 
                                     {{-- Tiền thưởng --}}
                                     <div class="mb-3 row">
                                         <label class="col-lg-4 col-form-label" for="money">Số tiền phụ cấp
@@ -68,7 +75,7 @@
 
                                     {{-- Ghi chú --}}
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="description">Ghi chú 
+                                        <label class="col-lg-4 col-form-label" for="description">Ghi chú
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -82,10 +89,10 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <div class="col-lg-8 ms-auto">
-                                            <button type="submit" class="btn btn-primary">Tạo mới</button>
+                                            <button type="submit" class="btn btn-primary">Sửa</button>
                                             <a href="{{ route('ad.allowances_index') }}" class="btn btn-default">Quay lại</a>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                 </div>
                             </div>
                         </form>

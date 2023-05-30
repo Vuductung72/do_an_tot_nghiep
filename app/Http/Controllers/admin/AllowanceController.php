@@ -34,8 +34,6 @@ class AllowanceController extends Controller
      */
     public function create()
     {
-        $staffs = Staff::all();
-        return view('admin.allowances.create', compact('staffs'));
     }
 
     /**
@@ -46,16 +44,6 @@ class AllowanceController extends Controller
      */
     public function store(AllowanceRequest $request)
     {
-        try {
-            DB::beginTransaction();
-            $data = $request->only('name', 'idStaff', 'money', 'description');
-            Allowance::create($data);
-            DB::commit();
-            session()->flash('success', 'Thêm phụ cấp thành công');
-            return redirect()->route('ad.allowances_index');
-        } catch (\Exception $exception) {
-            DB::rollback();
-        }
     }
 
     /**
@@ -94,7 +82,8 @@ class AllowanceController extends Controller
         try {
             DB::beginTransaction();
             $allowance = Allowance::find($id);
-            $data = $request->only('name', 'idStaff', 'money', 'description');
+            $data = $request->only('name', 'money', 'description');
+            $data['idStaff'] = $allowance->staff->id;
             $allowance->update($data);
             DB::commit();
             session()->flash('success', 'Sửa phụ cấp thành công');

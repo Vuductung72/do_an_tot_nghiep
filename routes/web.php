@@ -42,7 +42,6 @@ Route::post('/login', [LoginController::class, 'login'])->name('ad.login');
 
 Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'middleware' => 'checkrole'], function () {
 
-
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -87,6 +86,8 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::get('/tim-kiem', 'StaffController@search')->name('staffs_search');
         Route::get('/thay-doi-luong/{id}', 'StaffController@salaryChange')->name('staffs_change');
         Route::post('/thay-doi-luong/{id}' , 'StaffController@calculatorSalaryChange')->name('staffs_calculatorSalaryChange');
+        Route::get('/{id}/phu-cap', 'StaffController@allowance')->name('staffs_allowance');
+        Route::post('/{id}/phu-cap', 'StaffController@postAllowance')->name('post.staffs_allowance');
 
 
     });
@@ -144,8 +145,6 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
 
     Route::prefix('phu-cap')->group(function () {
         Route::get('/', [AllowanceController::class, 'index'])->name('allowances_index');
-        Route::get('/them', [AllowanceController::class, 'create'])->name('allowances_create');
-        Route::post('/store', [AllowanceController::class, 'store'])->name('allowances_store');
         Route::get('/chi-tiet/{id}', [AllowanceController::class, 'edit'])->name('allowances_edit');
         Route::post('/update/{id}', [AllowanceController::class, 'update'])->name('allowances_update');
         Route::get('/destroy/{id}', [AllowanceController::class, 'destroy'])->name('allowances_destroy');
