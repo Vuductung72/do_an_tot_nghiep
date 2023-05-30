@@ -22,7 +22,11 @@
                                         <select id="department" class="default-select form-control wide" name="department" tabindex="null">
                                             <option selected value="">Chọn...</option>
                                             @foreach ($departments as $item)
-                                                <option value="{{ $item->id }}" {{isset($department) ?? $item->id === $department ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                @if (isset($department))
+                                                    <option value="{{ $item->id }}" {{$item->id == $department ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                @else
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>

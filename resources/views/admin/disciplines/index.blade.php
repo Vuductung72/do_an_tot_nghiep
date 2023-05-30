@@ -2,7 +2,7 @@
 
 @section('title')
     <title>Quản lí kỉ luật</title>
-@endsection 
+@endsection
 
 @section('content')
     <div class="col-lg-12">
@@ -27,9 +27,13 @@
                                     <div class="col-12 col-md-3">
                                         <label for="department">Phòng ban</label>
                                         <select id="department" class="default-select form-control wide" name="department" tabindex="null">
-                                            <option selected value="">Chọn...</option>
+                                            <option value="">Chọn...</option>
                                             @foreach ($departments as $item)
-                                                <option value="{{ $item->id }}" {{isset($department) ?? $item->id === $department ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                @if (isset($department))
+                                                    <option value="{{ $item->id }}" {{$item->id == $department ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                @else
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -38,7 +42,11 @@
                                         <select id="position" class="default-select form-control wide" name="position" tabindex="null">
                                             <option selected value="">Chọn...</option>
                                             @foreach ($positions as $item)
-                                                <option value="{{ $item->id }}" {{isset($position) ?? $item->id === $position ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                @if (isset($position))
+                                                    <option value="{{ $item->id }}" {{$item->id == $position ? 'selected' : ''}}>{{ $item->name }}</option>
+                                                @else
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -51,10 +59,10 @@
                     </div>
 
                 </div>
-                
-                
+
+
             </div>
-            
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-responsive-md">
