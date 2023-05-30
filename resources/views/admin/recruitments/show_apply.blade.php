@@ -59,7 +59,6 @@
                                 <div class="mb-3 row">
                                     <label class="col-lg-4 col-form-label" for="cv">cv</label>
                                     <div class="col-lg-6">
-                                        <a href="{{route('ad.show_cv', ['id'=>$apply->id])}}" target="_blank">Xem CV</a>
                                         <a href="{{ route('ad.download_cv', ['id' => $apply->id]) }}">Tải về CV</a>
                                     </div>
                                 </div>
