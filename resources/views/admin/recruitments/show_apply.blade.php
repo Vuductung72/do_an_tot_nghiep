@@ -67,7 +67,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-lg-4 col-form-label" for="type">Trạng thái </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="type" id="type" value="{{ $apply->type === 0 ? 'Chưa xác nhận' : 'Đã xác nhận' }}" disabled>
+                                        <input type="text" class="form-control" name="type" id="type" value="{{ $apply->status == 0 ? 'Chưa xác nhận' : 'Đã xác nhận' }}" disabled>
                                     </div>
                                 </div>
 
