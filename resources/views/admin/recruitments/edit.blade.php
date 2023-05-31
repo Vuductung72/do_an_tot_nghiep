@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="experience">Kinh nghiệm làm viêc(năm) 
+                                        <label class="col-lg-4 col-form-label" for="experience">Kinh nghiệm làm viêc(năm)
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -62,7 +62,7 @@
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="quantity">Số lượng 
+                                        <label class="col-lg-4 col-form-label" for="quantity">Số lượng
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -76,7 +76,7 @@
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="wage">Lương 
+                                        <label class="col-lg-4 col-form-label" for="wage">Lương
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -131,7 +131,7 @@
                                             <input type="text" class="form-control" name="count" id="count" value="{{$applysCount}}" disabled>
                                         </div>
                                     </div>
-                                  
+
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3 row">
@@ -185,18 +185,12 @@
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ route('ad.apply_recruitments_show', ['id'=> $item->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-circle-info"></i></a>
-                                            @if ($item->status == 0)
-                                                <form id="status-form" action="{{ route('ad.recruitments_status_apply', ['id'=> $item->id]) }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary shadow btn-xs sharp me-1 w-100">
-                                                        Chưa xác nhận
-                                                    </button>
-                                                </form>
-                                            @else
-                                                <button type="submit" class="btn btn-primary shadow btn-xs sharp me-1 w-100" disabled>
-                                                    Đã xác nhận
+                                            <form id="status-form" action="{{ route('ad.recruitments_status_apply', ['id'=> $item->id]) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary shadow btn-xs sharp me-1 w-100">
+                                                    {{$item->status == 0 ? 'Xác nhận' : 'Huỷ xác nhận'}}
                                                 </button>
-                                            @endif
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

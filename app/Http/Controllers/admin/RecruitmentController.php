@@ -141,6 +141,11 @@ class RecruitmentController extends Controller
             session()->flash('success', 'Xác nhận người tuyển dụng thành công');
             return redirect()->back();
         }
+        else{
+            $apply->update(['status' => 0]);
+            session()->flash('success', 'Huỷ xác nhận người tuyển dụng thành công');
+            return redirect()->back();
+        }
     }
 
     public function search(Request $request)

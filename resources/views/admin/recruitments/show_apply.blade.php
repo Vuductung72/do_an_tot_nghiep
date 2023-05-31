@@ -73,18 +73,13 @@
 
                                 <div class="mb-3 row">
                                     <div class="col-lg-8 ms-auto d-flex">
-                                        @if ($apply->status == 0)
                                             <form id="status-form" action="{{ route('ad.recruitments_status_apply', ['id'=> $apply->id]) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">
-                                                    Xác nhận
+                                                    {{$apply->status == 0 ? 'Xác nhận' : 'Huỷ xác nhận'}}
                                                 </button>
                                             </form>
-                                        @else
-                                            <button type="submit" class="btn btn-primary" disabled>
-                                                Đã xác nhận
-                                            </button>
-                                        @endif
+
                                         <a href="{{ route('ad.recruitments_edit', ['id' => $apply->recruitment_id]) }}" class="btn btn-default">Quay lại</a>
                                     </div>
                                 </div>
