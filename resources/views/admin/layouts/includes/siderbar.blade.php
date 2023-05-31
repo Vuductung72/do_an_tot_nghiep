@@ -42,6 +42,7 @@
                 </a>
             </li>
 
+
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="fa-solid fa-money-bill"></i>
@@ -51,6 +52,7 @@
                     <li><a href="{{ route('ad.paychecks_index') }}">Danh sách bảng lương</a></li>
                     <li><a href="{{route('ad.salary_change_index')}}">Danh sách tăng lương</a></li>
                     <li><a href="{{ route('ad.allowances_index') }}">Quản lí phụ cấp</a></li>
+                    <li><a href="{{ route('ad.leave_index') }}">Quản lí ngày nghỉ</a></li>
                 </ul>
             </li>
 

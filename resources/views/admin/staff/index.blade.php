@@ -73,7 +73,7 @@
                                 <th><strong>Tên</strong></th>
                                 <th><strong>Phòng ban</strong></th>
                                 <th><strong>Chức vụ</strong></th>
-                                <th><strong>Trạng thái</strong></th>
+                                <th><strong>Ngày nghỉ</strong></th>
                                 <th><strong>Bảng công</strong></th>
                                 <th><strong>Phụ cấp</strong></th>
                                 <th><strong>Bảng lương</strong></th>
@@ -91,7 +91,7 @@
                                 <td><span class="w-space-no">{{ $item->name }}</span></td>
                                 <td>{{ $item->department->name }}</td>
                                 <td>{{ $item->position->name }}</td>
-                                <td>{{ $item->status == 0 ? 'Đang làm việc' : 'Đã nghỉ việc' }}</td>
+                                <td><a href="{{route('ad.staffs_day_off', ['id' => $item->id])}}">Ngày xin nghỉ</a></td>
                                 <td><a href="{{route('ad.staffs_attendance', ['id' => $item->id])}}">Bảng công</a></td>
                                 <td><a href="{{route('ad.staffs_allowance', ['id' => $item->id])}}">Phụ cấp</a></td>
                                 <td><a href="{{route('ad.staffs_litspaycheck', ['id' => $item->id])}}">Tính lương</a></td>

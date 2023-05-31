@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attendance extends Model
+class Leave extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'idStaff', 'date', 'time_in', 'time_out', 'status'
+        'id_staff', 'date' , 'reason'
     ];
 
     public function staff()
     {
-        return $this->hasOne(Staff::class, 'id', 'idStaff');
+        return $this->hasOne(Staff::class, 'id', 'id_staff');
     }
 }

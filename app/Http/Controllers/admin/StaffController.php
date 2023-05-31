@@ -10,6 +10,7 @@ use App\Models\Attendance;
 use App\Models\Staff;
 use App\Models\Position;
 use App\Models\Department;
+use App\Models\Leave;
 use App\Models\Paycheck;
 use App\Models\SalaryChange;
 use Carbon\Carbon;
@@ -282,6 +283,13 @@ class StaffController extends Controller
             session()->flash('error', 'Thêm phụ cấp thất bại');
             return redirect()->back();
         }
+    }
+
+    public function day_off($id)
+    {
+        $staff = Staff::find($id);
+        $leaves = Leave::where('id_staff', '=' , $id)->orderBY('date', 'DESC')->paginate(5);
+        return view('admin.staff.leave', compact('staff', 'leaves'));
     }
 
 }

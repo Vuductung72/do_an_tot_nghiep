@@ -24,8 +24,8 @@ class PositionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:departments',
-            'code' => 'required|unique:departments',
+            'name' => 'required|unique:positions',
+            'code' => 'required',
         ];
     }
 
@@ -35,7 +35,6 @@ class PositionRequest extends FormRequest
             'name.required' => 'Tên chức vụ là trường bắt buộc nhập',
             'name.unique' => 'Tên Chúc vụ đã tồn tại',
             'code.required' => 'Mã chức vụ là trường bắt buộc nhập',
-            'code.unique' => 'Mã chức vụ đã tồn tại',
         ];
     }
 }

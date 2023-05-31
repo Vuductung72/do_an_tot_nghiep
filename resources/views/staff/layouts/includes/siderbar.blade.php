@@ -17,6 +17,13 @@
             </li>
 
             <li>
+                <a class="ai-icon" href="{{route('staff.leave_index')}}" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Xin nghỉ</span>
+                </a>
+            </li>
+
+            <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="fa-solid fa-award"></i>
                     <span class="nav-text">Khen thưởng - kỉ luật</span>

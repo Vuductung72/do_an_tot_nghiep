@@ -16,7 +16,7 @@
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
         <link href="{{ asset("admins/css/style.css") }}" rel="stylesheet">
-        
+
         <script src="{{ asset('global/plugins/sweetalert2@11.js') }}"></script>
     </head>
 
@@ -35,7 +35,7 @@
                             <div class="row no-gutters">
                                 <div class="col-xl-12">
                                     <div class="auth-form">
-                                        <h4 class="text-center mb-4 text-white">Đăng nhập tài khoản</h4>
+                                        <h4 class="text-center mb-4 text-white">Đăng nhập tài khoản quản trị</h4>
                                         <form action="" method="POST">
                                             @csrf
                                             <div class="form-group">
@@ -60,7 +60,7 @@
                                                 <button type="submit" class="btn bg-white text-primary btn-block">Đăng nhập</button>
                                             </div>
                                         </form>
-                                        
+
                                     </div>
                                 </div>
                             </div>

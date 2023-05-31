@@ -32,21 +32,8 @@ class AttendanceController extends Controller
         $attendances = Attendance::where('idStaff', '=' ,Auth::guard('staff')->user()->id)->orderBY('date', 'DESC')->paginate(30);
         $today = Carbon::now()->format('Y-m-d');
         $attendance = Attendance::where('idStaff', Auth::guard('staff')->user()->id)->where('date', $today)->first();
-
-        $status = 0;
-
-
-        if($attendance){
-            if($attendance->time_out == null) {
-                $status = 1;
-            } else $status = 2;
-
-        }
-        else{
-            $status = 0;
-        }
-
-        return view('staff.attendance.index', compact('attendances', 'status'));
+        // dd($attendance);
+        return view('staff.attendance.index', compact('attendances', 'attendance'));
     }
 
     /**
@@ -70,6 +57,7 @@ class AttendanceController extends Controller
         $data['idStaff'] = Auth::guard('staff')->user()->id;
         $data['date'] = date('Y-m-d');
         $data['time_in'] = date('H:i:s');
+        $data['status'] = 1;
         Attendance::create($data);
         session()->flash('success', 'Điểm danh thành công');
         return redirect()->route('staff.attendance_index');
@@ -81,15 +69,23 @@ class AttendanceController extends Controller
         $data['idStaff'] = Auth::guard('staff')->user()->id;
         $data['date'] = date('Y-m-d');
         $data['time_out'] = date('H:i:s');
+        $data['status'] = 2;
         $attendance = Attendance::where('idStaff', $data['idStaff'])->where('date', $data['date'])->first();
         if($attendance){
-            $attendance->update($data);
-            session()->flash('success', 'Checkout thành công');
-            return redirect()->route('staff.attendance_index');
+            if ($attendance->status == 1) {
+                $attendance->update($data);
+                session()->flash('success', 'Checkout thành công!');
+                return redirect()->route('staff.attendance_index');
+            }
+            else{
+                session()->flash('info', 'Bạn đã checkout ngày hôm nay!');
+                return redirect()->route('staff.attendance_index');
+            }
+
 
         }
         else{
-            session()->flash('error', 'Bản ghi không tồn tại');
+            session()->flash('error', 'Bản ghi không tồn tại!');
             return redirect()->route('staff.attendance_index');
         }
 

@@ -15,21 +15,18 @@
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
-                        @if ($status == 0)
+                        @if ($attendance == null)
                             <form class="needs-validation" enctype="multipart/form-data" action="{{ route('staff.attendance_checkIn') }}" novalidate method="POST">
                                 @csrf
                                     <button type="submit" class="btn btn-primary" style="width: 100%;">Check in</button>
                             </form>
-
-                        @elseif ($status == 1)
+                        @else
                             <form class="needs-validation" enctype="multipart/form-data" action="{{ route('staff.attendance_checkOut') }}" novalidate method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary" style="width: 100%;" >Check out</button>
                             </form>
-                        @else
-                                <button type="submit" class="btn btn-primary" style="width: 100%;" disabled>Check out</button>
                         @endif
-                        
+
                         <table class="table table-responsive-md" style="margin-top: 50px;">
                             <thead>
                                 <tr>
@@ -37,6 +34,7 @@
                                     <th><strong>Ngày</strong></th>
                                     <th><strong>Giờ vào làm</strong></th>
                                     <th><strong>Giờ nghỉ</strong></th>
+                                    <th><strong>Trạng thái</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,6 +44,7 @@
                                     <td>{{ $item->date }}</td>
                                     <td>{{ $item->time_in }}</td>
                                     <td>{{ $item->time_out }}</td>
+                                    <td>{{ $item->status == 1 ? 'Đã checkin' : 'Đã checkout' }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -1,14 +1,14 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    <title>Danh sách điểm danh</title>
+    <title>Ngày xin nghỉ của nhân viên {{$staff->name}}</title>
 @endsection
 
 @section('content')
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Danh sách điểm danh</h4>
+                <h4 class="card-title">Ngày xin nghỉ của nhân viên {{$staff->name}}</h4>
                 <div class="actions">
                     <a href="{{ route('ad.staffs_index') }}" class="btn btn-sm btn-primary">Quay lại</a>
                 </div>
@@ -21,24 +21,24 @@
                             <tr>
                                 <th><strong>STT</strong></th>
                                 <th><strong>Tên</strong></th>
-                                <th><strong>Ngày</strong></th>
-                                <th><strong>Check in</strong></th>
-                                <th><strong>Check out</strong></th>
+                                <th><strong>Ngày xin nghỉ</strong></th>
+                                <th width='500'><strong>Lý do</strong></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($attendance as $item)
+                            @foreach ($leaves as $item)
                             <tr>
                                 <td><strong>{{ $loop->index +1}}</strong></td>
-                                <td><span class="w-space-no">{{ $item->staff->name }}</span></td>
+                                <td> {{$item->staff->name }}</td>
                                 <td>{{ $item->date }}</td>
-                                <td>{{ $item->time_in }}</td>
-                                <td>{{ $item->time_out }}</td>
+                                <td>{{ $item->reason }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-
+                    <div class="pagination justify-content-center">
+                        {{ $leaves->links() }}
+                    </div>
                 </div>
 
             </div>

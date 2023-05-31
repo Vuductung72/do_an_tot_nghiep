@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\admin;
+namespace App\Http\Requests\staff;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DepartmentRequest extends FormRequest
+class LeaveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,14 @@ class DepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:departments',
-            'code' => 'required',
+            'reason' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Tên phòng ban là trường bắt buộc nhập',
-            'name.unique' => 'Tên phòng ban đã tồn tại',
-            'code.required' => 'Mã phòng ban là trường bắt buộc nhập',
+            'reason.required' => 'Lý do xin nghỉ không được phép để trống',
         ];
     }
 }

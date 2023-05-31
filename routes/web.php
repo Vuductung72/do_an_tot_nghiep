@@ -88,6 +88,7 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::post('/thay-doi-luong/{id}' , 'StaffController@calculatorSalaryChange')->name('staffs_calculatorSalaryChange');
         Route::get('/{id}/phu-cap', 'StaffController@allowance')->name('staffs_allowance');
         Route::post('/{id}/phu-cap', 'StaffController@postAllowance')->name('post.staffs_allowance');
+        Route::get('{id}/ngay-nghi', 'StaffController@day_off')->name('staffs_day_off');
 
 
     });
@@ -103,6 +104,11 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::get('/chi-tiet/{id}', 'SalaryChangeController@show')->name('salary_change_show');
         Route::get('/tim-kiem', 'SalaryChangeController@search')->name('salary_change_search');
 
+    });
+
+    Route::prefix('ngay-nghi')->group(function () {
+        Route::get('/', 'LeaveController@index')->name('leave_index');
+        Route::get('/tim-kiem', 'LeaveController@search')->name('leave_search');
     });
 
     Route::prefix('khen-thuong')->group(function () {
@@ -160,6 +166,15 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::get('/destroy/{id}', [RoleController::class, 'destroy'])->name('roles_destroy');
     });
 
+    Route::prefix('hanh-dong')->group(function () {
+        Route::get('/', [PermissionController::class, 'index'])->name('permissions_index');
+        Route::get('/them', [PermissionController::class, 'create'])->name('permissions_create');
+        Route::post('/store', [PermissionController::class, 'store'])->name('permissions_store');
+        Route::get('/chi-tiet/{id}', [PermissionController::class, 'edit'])->name('permissions_edit');
+        Route::post('/update/{id}', [PermissionController::class, 'update'])->name('permissions_update');
+        Route::get('/destroy/{id}', [PermissionController::class, 'destroy'])->name('permissions_destroy');
+    });
+
     Route::prefix('tin-tuyen-dung')->group(function () {
         Route::get('/', 'RecruitmentController@index')->name('recruitments_index');
         Route::get('/them', 'RecruitmentController@create')->name('recruitments_create');
@@ -171,15 +186,6 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::get('/thong-tin-nguoi-tuyen-dung/{id}', 'ApplyRecruitmentController@show')->name('apply_recruitments_show');
         Route::get('/tim-kiem', 'RecruitmentController@search')->name('recruitments_search');
         Route::get('/download/{id}', 'ApplyRecruitmentController@download')->name('download_cv');
-    });
-
-    Route::prefix('hanh-dong')->group(function () {
-        Route::get('/', [PermissionController::class, 'index'])->name('permissions_index');
-        Route::get('/them', [PermissionController::class, 'create'])->name('permissions_create');
-        Route::post('/store', [PermissionController::class, 'store'])->name('permissions_store');
-        Route::get('/chi-tiet/{id}', [PermissionController::class, 'edit'])->name('permissions_edit');
-        Route::post('/update/{id}', [PermissionController::class, 'update'])->name('permissions_update');
-        Route::get('/destroy/{id}', [PermissionController::class, 'destroy'])->name('permissions_destroy');
     });
 
 });
@@ -219,6 +225,13 @@ Route::group(['prefix' => '/staff', 'as' => 'staff.', 'namespace' => 'Staff'], f
 
     Route::prefix('thay-doi-luong')->group(function () {
         Route::get('/', 'SalaryChangeController@index')->name('salary_index');
+    });
+
+    Route::prefix('xin-nghi')->group(function () {
+        Route::get('/', 'LeaveController@index')->name('leave_index');
+        Route::post('/post', 'LeaveController@leave')->name('leave_post');
+        Route::get('/delete/{id}', 'LeaveController@delete')->name('leave_destroy');
+
     });
 
 });
