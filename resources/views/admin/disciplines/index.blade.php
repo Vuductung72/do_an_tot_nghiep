@@ -90,8 +90,8 @@
                                 <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('ad.disciplines_edit', ['id' => $item->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="{{ route('ad.disciplines_destroy', ['id' => $item->id]) }}" data-url="" class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{ route('ad.disciplines_edit', ['id' => $item->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="Chỉnh sửa"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('ad.disciplines_destroy', ['id' => $item->id]) }}" data-url="" class="btn btn-danger shadow btn-xs sharp" title="Xoá"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>

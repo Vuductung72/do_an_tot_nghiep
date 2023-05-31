@@ -76,7 +76,7 @@
                                 <td>{{ number_format($item->total_salary) }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{route('ad.paychecks_show', ['id' => $item->id])}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa-solid fa-eye"></i></a>
+                                        <a href="{{route('ad.paychecks_show', ['id' => $item->id])}}" class="btn btn-primary shadow btn-xs sharp me-1" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></a>
                                     </div>
                                 </td>
                             </tr>
