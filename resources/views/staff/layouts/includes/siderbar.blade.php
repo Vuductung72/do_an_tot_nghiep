@@ -18,7 +18,7 @@
 
             <li>
                 <a class="ai-icon" href="{{route('staff.leave_index')}}" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
+                    <i class="fa-solid fa-calendar-days"></i>
                     <span class="nav-text">Xin nghỉ</span>
                 </a>
             </li>

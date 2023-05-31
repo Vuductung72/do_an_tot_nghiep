@@ -192,11 +192,11 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
 
 });
 
-Route::group(['prefix' => '/staff', 'as' => 'staff.', 'namespace' => 'Staff'], function () {
+Route::get('/staff', [StaffLoginController::class, 'index'])->name('staff.login.index');
+Route::post('/staff', [StaffLoginController::class, 'login'])->name('staff.login');
+Route::get('/staff/logout', [StaffLoginController::class, 'logout'])->name('staff.logout');
 
-    Route::get('/', [StaffLoginController::class, 'index'])->name('login.index');
-    Route::post('/', [StaffLoginController::class, 'login'])->name('login');
-    Route::get('/logout', [StaffLoginController::class, 'logout'])->name('logout');
+Route::group(['prefix' => '/staff', 'as' => 'staff.', 'namespace' => 'Staff', 'middleware' => 'checkstafflogin'], function () {
 
     Route::prefix('nhan-vien')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('accounts_index');
