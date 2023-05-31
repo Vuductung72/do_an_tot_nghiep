@@ -25,10 +25,11 @@ class LeaveController extends Controller
             DB::beginTransaction();
             $data = $request->only('date' ,'reason');
             $data['id_staff'] = Auth::guard('staff')->user()->id;
+            $data['status'] = 1;
             $today = Carbon::now()->format('Y-m-d');
             // dd($data['date']);
             if ($data['date'] >= $today ) {
-                $existingLeave = Leave::where('date', $data['date'])->first();
+                $existingLeave = Leave::where('id_staff', Auth::guard('staff')->user()->id)->where('date', $data['date'])->first();
                 if ($existingLeave) {
                     DB::rollback();
                     session()->flash('info', 'Bạn đã xin nghỉ ngày này!');
@@ -57,8 +58,15 @@ class LeaveController extends Controller
     public function delete($id)
     {
         $leave = Leave::find($id);
-        $leave->delete();
-        session()->flash('success', 'Huỷ xin nghỉ thành công!');
-        return redirect()->back();
+        // dd($leave->status);
+        if ($leave->status == 1) {
+            $leave->delete();
+            session()->flash('success', 'Huỷ xin nghỉ thành công!');
+            return redirect()->back();
+        }
+        else{
+            session()->flash('info', 'Ngày nghỉ đã được xác nhận không thể huỷ!');
+            return redirect()->back();
+        }
     }
 }

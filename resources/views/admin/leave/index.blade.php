@@ -1,14 +1,14 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    <title>Danh sách bảng lương</title>
+    <title>Quản lí ngày nghỉ</title>
 @endsection
 
 @section('content')
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Danh sách bảng lương</h4>
+                <h4 class="card-title">Quản lí ngày nghỉ</h4>
             </div>
 
             <div class="card-body">
@@ -55,6 +55,7 @@
                                 <th><strong>Chức vụ</strong></th>
                                 <th><strong>Ngày nghỉ</strong></th>
                                 <th width='450'><strong>Lí do</strong></th>
+                                <th><strong>Trạng thái</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,6 +68,14 @@
                                 <td>{{ $item->staff->position->name }}</td>
                                 <td>{{ $item->date }}</td>
                                 <td>{{ $item->reason }}</td>
+                                <td>
+                                    <form id="status-form" action="{{ route('ad.leave_status', $item->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary shadow btn-xs" data-url="" title="{{$item->status == '1' ? 'Xác nhận' : 'Huỷ xác nhận'}}">
+                                            {{$item->status == 1 ? 'Xác nhận' : 'Huỷ xác nhận'}}
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

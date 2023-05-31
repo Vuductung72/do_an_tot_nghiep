@@ -16,6 +16,20 @@ class LeaveController extends Controller
         return view('admin.leave.index', compact('leaves', 'departments'));
     }
 
+    public function status($id)
+    {
+        $leave = Leave::find($id);
+        if ($leave->status == 1) {
+            $leave->update(['status' => 2]);
+            session()->flash('success', 'Xác nhận ngày nghỉ thành công!');
+            return redirect()->back();
+        } else {
+            $leave->update(['status' => 1]);
+            session()->flash('success', 'Huỷ xác nhận ngày nghỉ thành công!');
+            return redirect()->back();
+        }
+    }
+
     public function search(Request $request)
     {
         $date = $request->date ?? '';

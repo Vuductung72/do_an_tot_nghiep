@@ -23,6 +23,7 @@
                                 <th><strong>Tên</strong></th>
                                 <th><strong>Ngày xin nghỉ</strong></th>
                                 <th width='500'><strong>Lý do</strong></th>
+                                <th><strong>Trạng thái</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,14 @@
                                 <td> {{$item->staff->name }}</td>
                                 <td>{{ $item->date }}</td>
                                 <td>{{ $item->reason }}</td>
+                                <td>
+                                    <form id="status-form" action="{{ route('ad.leave_status', $item->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary shadow btn-xs" data-url="" title="{{$item->status == '1' ? 'Xác nhận' : 'Huỷ xác nhận'}}">
+                                            {{$item->status == 1 ? 'Xác nhận' : 'Huỷ xác nhận'}}
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

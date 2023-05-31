@@ -109,6 +109,8 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
     Route::prefix('ngay-nghi')->group(function () {
         Route::get('/', 'LeaveController@index')->name('leave_index');
         Route::get('/tim-kiem', 'LeaveController@search')->name('leave_search');
+        Route::post('/status/{id}', 'LeaveController@status')->name('leave_status');
+
     });
 
     Route::prefix('khen-thuong')->group(function () {

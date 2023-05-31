@@ -47,6 +47,7 @@
                                     <th><strong>STT</strong></th>
                                     <th><strong>Ngày</strong></th>
                                     <th width='500'><strong>Lý do</strong></th>
+                                    <th><strong>Trạng thái</strong></th>
                                     <th><strong>Action</strong></th>
                                 </tr>
                             </thead>
@@ -56,6 +57,7 @@
                                     <td><strong>{{ $loop->index +1}}</strong></td>
                                     <td>{{ $item->date }}</td>
                                     <td>{{ $item->reason }}</td>
+                                    <td>{{ $item->status == 1 ? 'Chưa xác nhận' : 'Đã xác nhận' }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ route('staff.leave_destroy', ['id' => $item->id]) }}" data-url="" class="btn btn-danger shadow btn-xs sharp" title="Xoá"><i class="fas fa-trash-alt"></i></a>
