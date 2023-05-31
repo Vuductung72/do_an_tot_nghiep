@@ -39,17 +39,17 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
-                                            <input type="file" class="form-file-input form-control @error('image') is-invalid @enderror" name="image">
+                                            <input type="file" class="form-file-input form-control @error('image') is-invalid @enderror" name="image" id="image">
                                             @error('image')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
-                                            <div style="margin: 0 auto;">
-                                                <img src="{{ $staff->image }}" alt="" style="width: 200px;">
+                                            <div style="margin: 8px auto;">
+                                                <img src="{{ $staff->image }}" alt="" style="width: 200px;" id="avatarImage">
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     {{-- cccd --}}
                                     <div class="mb-3 row">
@@ -214,13 +214,13 @@
                                                     @endif
                                             </select>
                                         </div>
-                                    </div
+                                    </div>
                                     <div class="mb-3 row">
                                         <div class="col-lg-8 ms-auto">
                                             <button type="submit" class="btn btn-primary">Sửa</button>
                                             <a href="{{ route('ad.staffs_index') }}" class="btn btn-default">Quay lại</a>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -231,3 +231,24 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        /* load file image */
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#avatarImage').attr('src', e.target.result);
+                $('#avatarImage').hide();
+                $('#avatarImage').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#image").change(function() {
+            readURL(this);
+        });
+    </script>
+@endpush

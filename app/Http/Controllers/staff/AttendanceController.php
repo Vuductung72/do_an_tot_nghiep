@@ -29,7 +29,7 @@ class AttendanceController extends Controller
     public function index()
     {
         /* show thông tin điểm danh */
-        $attendances = Attendance::where('idStaff', '=' ,Auth::guard('staff')->user()->id)->orderBY('date', 'DESC')->paginate(5);
+        $attendances = Attendance::where('idStaff', '=' ,Auth::guard('staff')->user()->id)->orderBY('date', 'DESC')->paginate(30);
         $today = Carbon::now()->format('Y-m-d');
         $attendance = Attendance::where('idStaff', Auth::guard('staff')->user()->id)->where('date', $today)->first();
 
@@ -40,12 +40,12 @@ class AttendanceController extends Controller
             if($attendance->time_out == null) {
                 $status = 1;
             } else $status = 2;
-            
+
         }
         else{
             $status = 0;
         }
-        
+
         return view('staff.attendance.index', compact('attendances', 'status'));
     }
 
@@ -86,13 +86,13 @@ class AttendanceController extends Controller
             $attendance->update($data);
             session()->flash('success', 'Checkout thành công');
             return redirect()->route('staff.attendance_index');
-            
+
         }
         else{
             session()->flash('error', 'Bản ghi không tồn tại');
             return redirect()->route('staff.attendance_index');
         }
-        
+
     }
 
     /**
@@ -143,6 +143,6 @@ class AttendanceController extends Controller
     /* check điểm danh */
     public function checkAttendance(Request $request)
     {
-       
+
     }
 }

@@ -39,13 +39,11 @@ Route::group(['prefix' => 'laravel-filemanager'], function () {
 
 Route::get('/login', [LoginController::class, 'index'])->name('ad.login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('ad.login');
+Route::get('admin/logout', [LoginController::class, 'logout'])->name('ad.logout');
 
+Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'middleware' => 'checkrole'], function () {
 
-
-Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin'], function () {
-
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
+    // Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', [HomeController::class, 'index'])->name('index');
 
     Route::prefix('tai-khoan-quan-tri')->group(function () {
