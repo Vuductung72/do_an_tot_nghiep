@@ -57,14 +57,16 @@ class ApplyRecruitmentController extends Controller
     {
         $apply = ApplyRecruitment::find($id);
         $fileCV = $apply->user->cv;
-        $fileName = basename($fileCV);
-        $file=Storage::disk('public')->get('cv_user/'.$fileName);
-
-        return (response($file, 200))
-              ->header('Content-Type', 'image/pdf');
-
-        return redirect()->route('ad.apply_recruitments_show', $id);
-
+        if ($fileCV == null) {
+            session()->flash('info', 'Không tồn tại cv!');
+            return redirect()->back();
+        } else {
+            $fileName = basename($fileCV);
+            $file=Storage::disk('public')->get('cv_user/'.$fileName);
+            return (response($file, 200))
+                ->header('Content-Type', 'image/pdf');
+            return redirect()->route('ad.apply_recruitments_show', $id);
+        }
     }
 
 

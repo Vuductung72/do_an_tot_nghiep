@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="form-validation">
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-xl-8">
                                 {{-- tên --}}
                                 <div class="mb-3 row">
                                     <label class="col-lg-4 col-form-label" for="name">Tên</label>
@@ -60,6 +60,13 @@
                                     <label class="col-lg-4 col-form-label" for="cv">cv</label>
                                     <div class="col-lg-6">
                                         <a href="{{ route('ad.download_cv', ['id' => $apply->id]) }}">Tải về CV</a>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-lg-4 col-form-label" for="cv">Đường dẫn cv</label>
+                                    <div class="col-lg-6">
+                                        <a href="{{ $apply->user->cv_link }}">{{ $apply->user->cv_link }}</a>
                                     </div>
                                 </div>
 
