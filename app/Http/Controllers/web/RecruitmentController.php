@@ -47,7 +47,7 @@ class RecruitmentController extends Controller
     {
         if (Auth::guard('user')->check()) {
             try {
-                if(Auth::guard('user')->user()->cv === null){
+                if(Auth::guard('user')->user()->cv === null && Auth::guard('user')->user()->cv_link === null){
                     session()->flash('info', 'Bạn cần thêm cv để ứng tuyển!');
                     return redirect()->route('w.account.index');
                 }

@@ -37,11 +37,17 @@ class AccountController extends Controller
                 $dataCv = $this->storageTraitUpload($request, 'cv', 'cv_user');
                 $data['cv'] = $dataCv['file_path'];
             }
+            if($request->cv_link){
+                $data['cv_link'] = $request->cv_link;
+            }
+
             if ($request->password) {
                 $data['password'] = Hash::make($request->password);
             }else{
                 $data['password'] = $user->password;
             }
+
+
             $user->update($data);
             DB::commit();
             session()->flash('success', 'Cập nhật tài khoản thành công');

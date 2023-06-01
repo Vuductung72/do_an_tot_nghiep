@@ -30,6 +30,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="cv_link">Đường dẫn CV</label>
+                            <input type="text" class="form-file-input form-control" name="cv_link" placeholder="Đường dẫn tới nơi lưu cv của bạn..." value="{{Auth::guard('user')->user()->cv_link}}">
+                        </div>
+
+                        <div class="form-group">
                             <label for="gender">Giới tính</label>
                             <select class="form-control" id="gender" for='gender' name="gender">>
                                 <option value="{{ Auth::guard('user')->user()->gender }}">{{ Auth::guard('user')->user()->gender == '0' ? 'Nữ' : 'Nam' }}</option>
