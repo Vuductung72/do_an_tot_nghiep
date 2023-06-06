@@ -34,7 +34,7 @@
                                     </div>
                                     {{-- Cấp độ khen thưởng --}}
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="type">Cấp độ khen thưởng
+                                        <label class="col-lg-4 col-form-label" for="type">Cấp độ kỉ luật
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -45,7 +45,7 @@
                                             </select>
                                         </div>
                                     </div>
- 
+
                                     {{-- cccd --}}
                                     <div class="mb-3 row">
                                         <label class="col-lg-4 col-form-label" for="validationCustom01">Lý do kỉ luật
@@ -63,7 +63,7 @@
 
                                     {{-- Ghi chú --}}
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="description">Ghi chú 
+                                        <label class="col-lg-4 col-form-label" for="description">Ghi chú
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -80,7 +80,7 @@
                                             <button type="submit" class="btn btn-primary">Sửa</button>
                                             <a href="{{ route('ad.achievements_index') }}" class="btn btn-default">Quay lại</a>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                 </div>
                             </div>
                         </form>

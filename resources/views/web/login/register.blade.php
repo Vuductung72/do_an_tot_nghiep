@@ -1,6 +1,6 @@
 @extends('web.layouts.master')
 
-@section('title')   
+@section('title')
     <title>Đăng kí tài khoản</title>
 @endsection
 
@@ -76,7 +76,7 @@
 
                         <div class="form-group">
                             <label for="re-password">Nhập lại mật khẩu</label>
-                            <input type="re-password" class="form-control" name="re-password" id="re-password" placeholder="Nhập lại mật khẩu...">
+                            <input type="password" class="form-control" name="re-password" id="re-password" placeholder="Nhập lại mật khẩu...">
                             @error('re-password')
                                 <small class="text-danger">
                                     {{ $message }}
@@ -86,7 +86,7 @@
                         <button type="submit" class="btn btn-primary">Đăng kí</button>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </section>

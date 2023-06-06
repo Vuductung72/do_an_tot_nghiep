@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="experience">Kinh nghiệm làm viêc(năm) 
+                                        <label class="col-lg-4 col-form-label" for="experience">Kinh nghiệm làm viêc(năm)
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -62,7 +62,7 @@
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="quantity">Số lượng 
+                                        <label class="col-lg-4 col-form-label" for="quantity">Số lượng
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -76,7 +76,7 @@
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label class="col-lg-4 col-form-label" for="wage">Lương 
+                                        <label class="col-lg-4 col-form-label" for="wage">Lương
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-6">
@@ -114,7 +114,7 @@
                                                 <option value="1">Hiện</option>
                                             </select>
                                         </div>
-                                    </div>                      
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3 row">
@@ -136,7 +136,7 @@
                                             <button type="submit" class="btn btn-primary">Tạo mới</button>
                                             <a href="{{ route('ad.recruitments_index') }}" class="btn btn-default">Quay lại</a>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                         </form>
