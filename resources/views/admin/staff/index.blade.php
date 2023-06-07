@@ -76,7 +76,6 @@
                                 <th><strong>Ngày nghỉ</strong></th>
                                 <th><strong>Bảng công</strong></th>
                                 <th><strong>Phụ cấp</strong></th>
-                                <th><strong>Bảng lương</strong></th>
                                 <th><strong>Lương</strong></th>
                                 <th><strong>Phạt</strong></th>
                                 <th><strong>Action</strong></th>
@@ -95,13 +94,13 @@
                                 <td><a href="{{route('ad.staffs_day_off', ['id' => $item->id])}}">Ngày xin nghỉ</a></td>
                                 <td><a href="{{route('ad.staffs_attendance', ['id' => $item->id])}}">Bảng công</a></td>
                                 <td><a href="{{route('ad.staffs_allowance', ['id' => $item->id])}}">Phụ cấp</a></td>
-                                <td><a href="{{route('ad.staffs_litspaycheck', ['id' => $item->id])}}">Tính lương</a></td>
                                 <td><a href="{{route('ad.staffs_change', ['id' => $item->id])}}">Lương</a></td>
                                 <td><a href="{{route('ad.punish_create', ['id' => $item->id])}}">Phạt</a></td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="{{ route('ad.staffs_edit', ['id' => $item->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="Chỉnh sửa"><i class="fas fa-pencil-alt"></i></a>
                                         <a href="{{ route('ad.staffs_destroy', ['id' => $item->id]) }}" data-url="" class="btn btn-danger shadow btn-xs sharp" title="Xoá"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{route('ad.staffs_litspaycheck', ['id' => $item->id])}}" class="btn btn-success shadow btn-xs sharp" title="Tính lương"><i class="fa-solid fa-money-bill"></i></a>
                                     </div>
                                 </td>
                             </tr>
