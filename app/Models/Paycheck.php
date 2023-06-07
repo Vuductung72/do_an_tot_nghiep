@@ -10,7 +10,7 @@ class Paycheck extends Model
     use HasFactory;
 
     protected $fillable = [
-        'idStaff', 'month', 'year', 'total_allowances', 'total_day_working', 'total_salary'
+        'idStaff', 'month', 'year', 'total_allowances','total_punishes', 'total_day_working', 'total_salary'
     ];
 
     public function staff()

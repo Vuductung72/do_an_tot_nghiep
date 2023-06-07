@@ -42,6 +42,12 @@ class Staff extends Authenticatable
     {
         return $this->hasMany(Allowance::class, 'idStaff');
     }
+
+    public function punish()
+    {
+        return $this->hasMany(Punish::class, 'id_staff');
+    }
+
     public function salaryChanges()
     {
         return $this->hasMany(SalaryChange::class, 'id_staff');

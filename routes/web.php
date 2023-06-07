@@ -89,7 +89,11 @@ Route::group(['prefix' => '/admin', 'as' => 'ad.', 'namespace' => 'Admin', 'midd
         Route::get('/{id}/phu-cap', 'StaffController@allowance')->name('staffs_allowance');
         Route::post('/{id}/phu-cap', 'StaffController@postAllowance')->name('post.staffs_allowance');
         Route::get('{id}/ngay-nghi', 'StaffController@day_off')->name('staffs_day_off');
-
+        Route::get('{id}/phat', 'PunishController@create')->name('punish_create');
+        Route::post('{id}/phat', 'PunishController@store')->name('punish_store');
+        Route::get('{id}/sua/{id_punish}', 'PunishController@edit')->name('punish_edit');
+        Route::post('{id}/sua/{id_punish}', 'PunishController@update')->name('punish_update');
+        Route::get('xoa-phat/{id}', 'PunishController@destroy')->name('punish_destroy');
 
     });
 
@@ -220,6 +224,9 @@ Route::group(['prefix' => '/staff', 'as' => 'staff.', 'namespace' => 'Staff', 'm
     Route::prefix('phu-cap')->group(function () {
         Route::get('/', [AllowancesController::class, 'index'])->name('allowances_index');
     });
+
+    Route::get('/phat', 'PunishController@index')->name('punish_index');
+
 
     Route::prefix('bang-luong')->group(function () {
         Route::get('/', 'PaycheckController@index')->name('paycheck_index');

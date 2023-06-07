@@ -4,6 +4,7 @@ namespace App\Http\Controllers\staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\Punish;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,16 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
-
-    // public function hasCheckedOut($id, $today)
-    // {
-    //     $lastAttendanceRecord = Attendance::select('idStaff', 'time_out')
-    //                             ->where('idStaff', $id)
-    //                             ->whereNotNull('time_out')
-    //                             ->first();
-
-    //     return ($lastAttendanceRecord && $lastAttendanceRecord->time_out);
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -59,6 +50,18 @@ class AttendanceController extends Controller
         $data['time_in'] = date('H:i:s');
         $data['status'] = 1;
         Attendance::create($data);
+        // kiểm tra xem đi làm muộn không
+        $checkinTime = Carbon::parse($data['time_in']);
+
+        if ($checkinTime->gte(Carbon::parse('8:35 am'))) {
+            $punish['id_staff'] = Auth::guard('staff')->user()->id;
+            $punish['date'] = date('Y-m-d');
+            $punish['money'] = 20000;
+            $punish['reason'] = 'Đi làm muộn ngày '. date('d-m-Y');
+            Punish::create($punish);
+            session()->flash('success', 'Điểm danh thành công, bạn bị phạt 20,000 VND vì đi làm muộn!');
+            return redirect()->route('staff.attendance_index');
+        }
         session()->flash('success', 'Điểm danh thành công');
         return redirect()->route('staff.attendance_index');
 

@@ -43,6 +43,7 @@
                     <li><a href="{{ route('staff.paycheck_index') }}">Bảng lương</a></li>
                     <li><a href="{{ route('staff.salary_index') }}">Thay đổi lương</a></li>
                     <li><a href="{{ route('staff.allowances_index') }}">Phụ cấp</a></li>
+                    <li><a href="{{ route('staff.punish_index') }}">Phạt</a></li>
                 </ul>
             </li>
 

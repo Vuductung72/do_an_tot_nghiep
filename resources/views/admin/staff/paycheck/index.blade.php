@@ -77,7 +77,14 @@
                         <div class="mb-3 row">
                             <label class="col-lg-4 col-form-label" for="validationCustom01">Tổng phụ cấp</label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" name="id_allowances" id="id_allowances"  value="{{ number_format( $totalAllowances ) }}" disabled>
+                                <input type="text" class="form-control" name="id_allowances" id="id_allowances"  value="{{ number_format( $totalAllowances ) }} VND" disabled>
+                            </div>
+                        </div>
+                        {{-- Phạt --}}
+                        <div class="mb-3 row">
+                            <label class="col-lg-4 col-form-label" for="validationCustom01">Tổng phạt</label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" name="id_allowances" id="id_allowances"  value="{{ number_format( $totalPunish ) }} VND" disabled>
                             </div>
                         </div>
                     </div>

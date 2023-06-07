@@ -12,6 +12,7 @@ use App\Models\Position;
 use App\Models\Department;
 use App\Models\Leave;
 use App\Models\Paycheck;
+use App\Models\Punish;
 use App\Models\SalaryChange;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -156,18 +157,27 @@ class StaffController extends Controller
         foreach ($staff->allowance as $item) {
             $totalAllowances += $item->money;
         }
-
         /* lấy tổng só này đi lam */
         $startDate = Carbon::now(); //returns current day
         $firstDay = $startDate->firstOfMonth()->toDateString();  //lay ngay dau tien cua thang
         $endDay = $startDate->endOfMonth()->toDateString();   //lay ngay cuoi cung cua thang
         $totalDay = Attendance::where('idStaff', $id)->where('date', '>=', $firstDay)-> where('date', '<=', $endDay)->count(); //tính số ngày công
+        // tính phạt
+        $punishs = Punish::where('id_staff', $id)->where('date', '>=', $firstDay)-> where('date', '<=', $endDay)->get();
+        $totalPunish = 0;
+        foreach ($punishs as $item) {
+            $totalPunish += $item->money;
+        }
+        // dd($totalPunish);
         /* tính tổng lương */
         $salary = $staff->salary;
-        $totalSalary = ($salary/25)*$totalDay + $totalAllowances;
+        $totalSalary = ($salary/25)*$totalDay + $totalAllowances - $totalPunish;
+        if($totalSalary < 0){
+            $totalSalary = 0;
+        }
         /* lấy dữ liệu bảng lương nhân viên */
         $paychecks = Paycheck::where('idStaff', '=' , $id)->orderBY('month', 'DESC')->paginate(5);
-        return view('admin.staff.paycheck.index', compact('paychecks', 'staff', 'totalDay', 'totalAllowances', 'totalSalary'));
+        return view('admin.staff.paycheck.index', compact('paychecks', 'staff', 'totalDay', 'totalAllowances', 'totalSalary', 'totalPunish'));
     }
 
     public function calculatorSalary(Request $request, $id)
@@ -187,6 +197,12 @@ class StaffController extends Controller
             $firstDay = $startDate->firstOfMonth()->toDateString();  //lay ngay dau tien cua thang
             $endDay = $startDate->endOfMonth()->toDateString();   //lay ngay cuoi cung cua thang
             $totalDay = Attendance::where('idStaff', $id)->where('date', '>=', $firstDay)-> where('date', '<=', $endDay)->count(); //tính số ngày công
+            // tính phạt
+            $punishs = Punish::where('id_staff', $id)->where('date', '>=', $firstDay)-> where('date', '<=', $endDay)->get();
+            $totalPunish = 0;
+            foreach ($punishs as $item) {
+                $totalPunish += $item->money;
+            }
             /* tính tổng lương */
             $salary = $staff->salary;
             $totalSalary = ($salary/25)*$totalDay + $totalAllowances; // tong luong = (luong co ban/25 ngay di lam)*so ngay di lam thuc te + tong phu cap;
@@ -195,6 +211,7 @@ class StaffController extends Controller
             $data['month'] = now()->month;
             $data['year'] = now()->year;
             $data['total_allowances'] = $totalAllowances;
+            $data['total_punishes'] = $totalPunish;
             $data['total_day_working'] = $totalDay;
             $data['total_salary'] = $totalSalary;
             // dd($data);

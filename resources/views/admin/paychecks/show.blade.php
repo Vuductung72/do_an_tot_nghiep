@@ -2,7 +2,7 @@
 
 @section('title')
     <title>Lương</title>
-@endsection 
+@endsection
 
 @section('content')
     <div class="col-lg-12">
@@ -55,8 +55,8 @@
                             <div class="col-lg-8">
                                 <input type="text" class="form-control" name="year" id="year" value="{{$paycheck->year}}" disabled>
                             </div>
-                        </div>  
-                        
+                        </div>
+
                         {{-- lương --}}
                         <div class="mb-3 row">
                             <label class="col-lg-4 col-form-label" for="validationCustom03">Lương</label>
@@ -79,6 +79,15 @@
                             <label class="col-lg-4 col-form-label" for="validationCustom01">Phụ cấp</label>
                             <div class="col-lg-8" style="position: relative">
                                 <input type="text" class="form-control" name="id_allowances" id="id_allowances"   value="{{ number_format($paycheck->total_allowances) }}" disabled>
+                                <span style="position: absolute; right: 30px; top:15px;">VND</span>
+                            </div>
+                        </div>
+
+                        {{-- phụ cấp --}}
+                        <div class="mb-3 row">
+                            <label class="col-lg-4 col-form-label" for="validationCustom01">Tổng phạt</label>
+                            <div class="col-lg-8" style="position: relative">
+                                <input type="text" class="form-control" name="id_allowances" id="id_allowances"   value="{{ number_format($paycheck->total_punishes) }}" disabled>
                                 <span style="position: absolute; right: 30px; top:15px;">VND</span>
                             </div>
                         </div>

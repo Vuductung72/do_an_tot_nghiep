@@ -78,6 +78,7 @@
                                 <th><strong>Phụ cấp</strong></th>
                                 <th><strong>Bảng lương</strong></th>
                                 <th><strong>Lương</strong></th>
+                                <th><strong>Phạt</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                         </thead>
@@ -96,6 +97,7 @@
                                 <td><a href="{{route('ad.staffs_allowance', ['id' => $item->id])}}">Phụ cấp</a></td>
                                 <td><a href="{{route('ad.staffs_litspaycheck', ['id' => $item->id])}}">Tính lương</a></td>
                                 <td><a href="{{route('ad.staffs_change', ['id' => $item->id])}}">Lương</a></td>
+                                <td><a href="{{route('ad.punish_create', ['id' => $item->id])}}">Phạt</a></td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="{{ route('ad.staffs_edit', ['id' => $item->id]) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="Chỉnh sửa"><i class="fas fa-pencil-alt"></i></a>
